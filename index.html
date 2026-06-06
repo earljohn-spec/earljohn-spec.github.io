@@ -33,6 +33,23 @@
 
   <body>
     <!-- ============================================================
+        PAGE LOADER
+    ============================================================ -->
+    <div class="page-loader" id="page-loader">
+      <div class="loader-content">
+        <div class="loader-logo">
+          <span class="loader-bracket">&lt;</span>
+          EJP
+          <span class="loader-bracket">/&gt;</span>
+        </div>
+        <div class="loader-bar-container">
+          <div class="loader-bar" id="loader-bar"></div>
+        </div>
+        <p class="loader-text" id="loader-text">Initializing...</p>
+      </div>
+    </div>
+
+    <!-- ============================================================
          NAVIGATION
     ============================================================ -->
     <nav class="navbar" id="navbar">
@@ -66,6 +83,9 @@
          HERO SECTION
     ============================================================ -->
     <section class="hero" id="home">
+      <!-- PARTICLE CANVAS -->
+      <canvas id="particle-canvas"></canvas>
+
       <div class="hero-container">
         <!-- Left: Text Content -->
         <div class="hero-content">

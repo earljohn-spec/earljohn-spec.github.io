@@ -1,12 +1,215 @@
 /* ============================================================
-   PORTFOLIO JAVASCRIPT
+   PORTFOLIO JAVASCRIPT — POLISHED VERSION
    Earl John B. Plaza
 ============================================================ */
 
 "use strict";
 
 /* ----------------------------------------------------------
-   1. TYPING ANIMATION
+   1. PAGE LOADER
+---------------------------------------------------------- */
+const loader = document.getElementById("page-loader");
+const loaderBar = document.getElementById("loader-bar");
+const loaderText = document.getElementById("loader-text");
+
+const loaderSteps = [
+  { width: "20%", text: "Loading assets..." },
+  { width: "45%", text: "Building UI..." },
+  { width: "70%", text: "Preparing animations..." },
+  { width: "90%", text: "Almost ready..." },
+  { width: "100%", text: "Welcome! 🚀" },
+];
+
+function runLoader() {
+  let step = 0;
+
+  function nextStep() {
+    if (step >= loaderSteps.length) {
+      // Hide loader smoothly
+      setTimeout(() => {
+        loader.classList.add("hidden");
+        // Trigger hero animations AFTER loader hides
+        setTimeout(triggerHeroAnimations, 300);
+      }, 400);
+      return;
+    }
+
+    const current = loaderSteps[step];
+    loaderBar.style.width = current.width;
+    loaderText.textContent = current.text;
+    step++;
+
+    setTimeout(nextStep, step === loaderSteps.length ? 600 : 380);
+  }
+
+  nextStep();
+}
+
+/* ----------------------------------------------------------
+   2. HERO ANIMATIONS (Triggered after loader)
+---------------------------------------------------------- */
+function triggerHeroAnimations() {
+  // Staggered content entrance
+  const heroContent = document.querySelector(".hero-content");
+  const heroVisual = document.querySelector(".hero-visual");
+  const badges = document.querySelectorAll(".floating-badge");
+
+  if (heroContent) heroContent.classList.add("animate");
+
+  // Visual entrance with slight delay
+  setTimeout(() => {
+    if (heroVisual) heroVisual.classList.add("animate");
+  }, 400);
+
+  // Badges appear one by one
+  badges.forEach((badge, index) => {
+    setTimeout(
+      () => {
+        badge.classList.add("visible");
+      },
+      800 + index * 180,
+    );
+  });
+
+  // Start typing animation
+  setTimeout(typeText, 1200);
+}
+
+/* ----------------------------------------------------------
+   3. GLITCH EFFECT ON NAME
+---------------------------------------------------------- */
+function initGlitch() {
+  const nameHighlight = document.querySelector(".name-highlight");
+  if (!nameHighlight) return;
+
+  nameHighlight.classList.add("glitch");
+  nameHighlight.setAttribute("data-text", nameHighlight.textContent);
+}
+
+/* ----------------------------------------------------------
+   4. PARTICLE BACKGROUND
+---------------------------------------------------------- */
+function initParticles() {
+  const canvas = document.getElementById("particle-canvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  // Resize canvas to hero section
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas, { passive: true });
+
+  // Particle settings
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 40 : 80;
+  const particles = [];
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 1.8 + 0.4;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.opacity = Math.random() * 0.5 + 0.1;
+      this.opacitySpeed = Math.random() * 0.006 + 0.002;
+      this.growing = Math.random() > 0.5;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Pulse opacity
+      if (this.growing) {
+        this.opacity += this.opacitySpeed;
+        if (this.opacity >= 0.6) this.growing = false;
+      } else {
+        this.opacity -= this.opacitySpeed;
+        if (this.opacity <= 0.05) this.growing = true;
+      }
+
+      // Wrap around edges
+      if (this.x < 0) this.x = canvas.width;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.y < 0) this.y = canvas.height;
+      if (this.y > canvas.height) this.y = 0;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 180, 216, ${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  // Create particles
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(new Particle());
+  }
+
+  // Draw connections between nearby particles
+  function drawConnections() {
+    const MAX_DISTANCE = 120;
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < MAX_DISTANCE) {
+          const opacity = (1 - distance / MAX_DISTANCE) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 180, 216, ${opacity})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  // Animation loop
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+
+    drawConnections();
+    requestAnimationFrame(animateParticles);
+  }
+
+  animateParticles();
+}
+
+/* ----------------------------------------------------------
+   5. ADD OUTER PROFILE RING
+---------------------------------------------------------- */
+function initProfileRing() {
+  const profileWrapper = document.querySelector(".profile-wrapper");
+  if (!profileWrapper) return;
+
+  const outerRing = document.createElement("div");
+  outerRing.classList.add("profile-ring-outer");
+  profileWrapper.appendChild(outerRing);
+}
+
+/* ----------------------------------------------------------
+   6. TYPING ANIMATION
 ---------------------------------------------------------- */
 const typingRoles = [
   "Aspiring Full-Stack Developer",
@@ -49,7 +252,7 @@ function typeText() {
 }
 
 /* ----------------------------------------------------------
-   2. NAVBAR — SCROLL EFFECT & ACTIVE LINK
+   7. NAVBAR — SCROLL EFFECT & ACTIVE LINK
 ---------------------------------------------------------- */
 const navbar = document.getElementById("navbar");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -87,7 +290,7 @@ function updateActiveNavLink() {
 }
 
 /* ----------------------------------------------------------
-   3. MOBILE HAMBURGER MENU
+   8. MOBILE HAMBURGER MENU
 ---------------------------------------------------------- */
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-links");
@@ -110,14 +313,13 @@ if (hamburger) {
   hamburger.addEventListener("click", toggleMenu);
 }
 
-// Close menu when a nav link is clicked
 navLinks.forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-// Close menu when clicking outside
 document.addEventListener("click", (e) => {
   if (
+    navMenu &&
     navMenu.classList.contains("open") &&
     !navMenu.contains(e.target) &&
     !hamburger.contains(e.target)
@@ -127,33 +329,36 @@ document.addEventListener("click", (e) => {
 });
 
 /* ----------------------------------------------------------
-   4. SCROLL REVEAL ANIMATION
+   9. SCROLL REVEAL
 ---------------------------------------------------------- */
 const revealElements = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
 
-  revealElements.forEach((el) => {
+  revealElements.forEach((el, index) => {
     const elementTop = el.getBoundingClientRect().top;
 
     if (elementTop < windowHeight - 80) {
-      el.classList.add("active");
+      // Stagger sibling reveals
+      setTimeout(() => {
+        el.classList.add("active");
 
-      // Animate skill bars when skills section is revealed
-      const skillFills = el.querySelectorAll(".skill-fill");
-      skillFills.forEach((fill) => {
-        const targetWidth = fill.getAttribute("data-width");
-        setTimeout(() => {
-          fill.style.width = targetWidth;
-        }, 300);
-      });
+        // Animate skill bars
+        const skillFills = el.querySelectorAll(".skill-fill");
+        skillFills.forEach((fill) => {
+          const targetWidth = fill.getAttribute("data-width");
+          setTimeout(() => {
+            fill.style.width = targetWidth;
+          }, 300);
+        });
+      }, index * 80);
     }
   });
 }
 
 /* ----------------------------------------------------------
-   5. SMOOTH SCROLL FOR ALL ANCHOR LINKS
+   10. SMOOTH SCROLL
 ---------------------------------------------------------- */
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
@@ -166,7 +371,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 /* ----------------------------------------------------------
-   6. SCROLL PROGRESS INDICATOR (Subtle top bar)
+   11. SCROLL PROGRESS BAR
 ---------------------------------------------------------- */
 function createScrollProgress() {
   const bar = document.createElement("div");
@@ -181,6 +386,7 @@ function createScrollProgress() {
     width: 0%;
     transition: width 0.1s linear;
     pointer-events: none;
+    border-radius: 0 2px 2px 0;
   `;
   document.body.prepend(bar);
   return bar;
@@ -196,7 +402,7 @@ function updateScrollProgress() {
 }
 
 /* ----------------------------------------------------------
-   7. CONSOLE EASTER EGG (Developer touch)
+   12. CONSOLE EASTER EGG
 ---------------------------------------------------------- */
 function showConsoleEasterEgg() {
   console.log(
@@ -208,17 +414,17 @@ function showConsoleEasterEgg() {
     "color: #8888a8; font-size: 0.9rem;",
   );
   console.log(
-    "%c📧 Let's connect: earljohnbplaza@gmail.com",
+    "%c📧 earljohnbplaza@gmail.com",
     "color: #7ee787; font-size: 0.9rem;",
   );
   console.log(
-    "%c🐙 GitHub: https://github.com/earljohn-spec",
+    "%c🐙 github.com/earljohn-spec",
     "color: #a78bfa; font-size: 0.9rem;",
   );
 }
 
 /* ----------------------------------------------------------
-   8. MASTER SCROLL HANDLER (Single listener for performance)
+   13. MASTER SCROLL HANDLER
 ---------------------------------------------------------- */
 function onScroll() {
   handleNavbarScroll();
@@ -228,31 +434,29 @@ function onScroll() {
 }
 
 /* ----------------------------------------------------------
-   9. INIT — Run on DOM Ready
+   14. INIT
 ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // Start typing animation
-  setTimeout(typeText, 800);
-
-  // Run scroll checks immediately for elements in view
-  revealOnScroll();
-  handleNavbarScroll();
-
-  // Show console message
+  // Initialize everything
+  initParticles();
+  initGlitch();
+  initProfileRing();
   showConsoleEasterEgg();
+
+  // Run loader — triggers hero animations on complete
+  runLoader();
+
+  // Initial scroll check
+  handleNavbarScroll();
 });
 
-// Attach scroll listener
 window.addEventListener("scroll", onScroll, { passive: true });
 
-// Handle resize (recalculate positions)
 window.addEventListener(
   "resize",
   () => {
     revealOnScroll();
-    if (window.innerWidth > 768) {
-      closeMenu();
-    }
+    if (window.innerWidth > 768) closeMenu();
   },
   { passive: true },
 );

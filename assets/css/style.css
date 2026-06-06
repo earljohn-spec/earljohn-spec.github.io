@@ -1465,3 +1465,281 @@ img {
     flex-direction: column;
   }
 }
+
+/* ============================================================
+   PAGE LOADER
+============================================================ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+.page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader-logo {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  animation: loaderPulse 1.2s ease-in-out infinite;
+}
+
+.loader-bracket {
+  color: var(--accent);
+}
+
+.loader-bar-container {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.loader-text {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  min-width: 180px;
+  text-align: center;
+}
+
+@keyframes loaderPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ============================================================
+   PARTICLE CANVAS
+============================================================ */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   GLITCH EFFECT ON NAME
+============================================================ */
+.hero-name {
+  position: relative;
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  color: #00ffff;
+  animation: glitchTop 4s infinite linear;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  transform: translateX(-3px);
+  opacity: 0.7;
+}
+
+.glitch::after {
+  color: #ff00ff;
+  animation: glitchBottom 4s infinite linear;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  transform: translateX(3px);
+  opacity: 0.7;
+}
+
+@keyframes glitchTop {
+  0%,
+  90%,
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  91% {
+    transform: translateX(-4px);
+    opacity: 0.7;
+  }
+  92% {
+    transform: translateX(4px);
+    opacity: 0.7;
+  }
+  93% {
+    transform: translateX(-2px);
+    opacity: 0.7;
+  }
+  94% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glitchBottom {
+  0%,
+  90%,
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  91% {
+    transform: translateX(4px);
+    opacity: 0.7;
+  }
+  92% {
+    transform: translateX(-4px);
+    opacity: 0.7;
+  }
+  93% {
+    transform: translateX(2px);
+    opacity: 0.7;
+  }
+  94% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   HERO CONTENT — STAGGERED ENTRANCE OVERRIDE
+============================================================ */
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-content.animate > *:nth-child(1) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+.hero-content.animate > *:nth-child(2) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+.hero-content.animate > *:nth-child(3) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+.hero-content.animate > *:nth-child(4) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+}
+.hero-content.animate > *:nth-child(5) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+}
+.hero-content.animate > *:nth-child(6) {
+  animation: smoothFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
+}
+
+@keyframes smoothFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   HERO VISUAL — SMOOTHER ENTRANCE
+============================================================ */
+.hero-visual {
+  opacity: 0;
+  transform: scale(0.92) translateY(20px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-visual.animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================================
+   FLOATING BADGES — SMOOTHER
+============================================================ */
+.floating-badge {
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.floating-badge.visible {
+  opacity: 1;
+}
+
+.floating-badge:hover {
+  transform: translateY(-4px) scale(1.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 180, 216, 0.25);
+  border-color: var(--border-accent);
+}
+
+/* ============================================================
+   PROFILE RING — DUAL RING EFFECT
+============================================================ */
+.profile-ring-outer {
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 216, 0.15);
+  animation: spin 16s linear infinite reverse;
+}
+
+/* ============================================================
+   SCROLL REVEAL — SMOOTHER OVERRIDE
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
