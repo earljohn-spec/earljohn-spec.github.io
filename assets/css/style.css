@@ -1117,6 +1117,7 @@ img {
 .project-cta {
   display: flex;
   gap: 12px;
+  margin-top: 8px;
 }
 
 .preview-window {
@@ -1694,7 +1695,7 @@ img {
    FILAMENT BADGE
 ============================================================ */
 .project-filament-badge {
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .filament-tag {
