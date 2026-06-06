@@ -29,6 +29,14 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Force scroll to top on reload -->
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    </script>
   </head>
 
   <body>
@@ -460,7 +468,6 @@
 
         <!-- ── PROJECT 01 — SOLAR PANEL ── -->
         <div class="project-card reveal">
-          <!-- Left: Project Info -->
           <div class="project-info">
             <div class="project-meta">
               <span class="project-number">01</span>
@@ -544,7 +551,6 @@
             </div>
           </div>
 
-          <!-- Right: Preview -->
           <div class="project-preview">
             <div class="preview-window">
               <div class="preview-header">
@@ -579,7 +585,6 @@
 
         <!-- ── PROJECT 02 — EDUCAMPUS ── -->
         <div class="project-card project-card-reverse reveal">
-          <!-- Left: Preview -->
           <div class="project-preview">
             <div class="preview-window">
               <div class="preview-header">
@@ -610,7 +615,6 @@
             </div>
           </div>
 
-          <!-- Right: Project Info -->
           <div class="project-info">
             <div class="project-meta">
               <span class="project-number">02</span>
@@ -720,7 +724,6 @@
         </div>
 
         <div class="contact-grid">
-          <!-- Left: Info -->
           <div class="contact-info reveal">
             <h3 class="contact-subtitle">
               Open to opportunities and collaborations.
@@ -778,7 +781,6 @@
             </div>
           </div>
 
-          <!-- Right: Terminal -->
           <div class="contact-terminal reveal">
             <div class="terminal-window">
               <div class="terminal-header">
