@@ -1670,3 +1670,47 @@ img {
     flex-direction: column;
   }
 }
+
+/* ============================================================
+   PROJECT 02 — REVERSED LAYOUT
+============================================================ */
+.project-card-reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+  margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .project-card-reverse {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+  }
+
+  .project-card-reverse .project-preview {
+    order: -1;
+  }
+}
+
+/* ============================================================
+   FILAMENT BADGE
+============================================================ */
+.project-filament-badge {
+  margin-bottom: 20px;
+}
+
+.filament-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.15),
+    rgba(0, 180, 216, 0.1)
+  );
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #a78bfa;
+  letter-spacing: 0.02em;
+}
