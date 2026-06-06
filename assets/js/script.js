@@ -25,10 +25,8 @@ function runLoader() {
 
   function nextStep() {
     if (step >= loaderSteps.length) {
-      // Hide loader smoothly
       setTimeout(() => {
         loader.classList.add("hidden");
-        // Trigger hero animations AFTER loader hides
         setTimeout(triggerHeroAnimations, 300);
       }, 400);
       return;
@@ -49,19 +47,16 @@ function runLoader() {
    2. HERO ANIMATIONS (Triggered after loader)
 ---------------------------------------------------------- */
 function triggerHeroAnimations() {
-  // Staggered content entrance
   const heroContent = document.querySelector(".hero-content");
   const heroVisual = document.querySelector(".hero-visual");
   const badges = document.querySelectorAll(".floating-badge");
 
   if (heroContent) heroContent.classList.add("animate");
 
-  // Visual entrance with slight delay
   setTimeout(() => {
     if (heroVisual) heroVisual.classList.add("animate");
   }, 400);
 
-  // Badges appear one by one
   badges.forEach((badge, index) => {
     setTimeout(
       () => {
@@ -71,7 +66,6 @@ function triggerHeroAnimations() {
     );
   });
 
-  // Start typing animation
   setTimeout(typeText, 1200);
 }
 
@@ -95,7 +89,6 @@ function initParticles() {
 
   const ctx = canvas.getContext("2d");
 
-  // Resize canvas to hero section
   function resizeCanvas() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -104,7 +97,6 @@ function initParticles() {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas, { passive: true });
 
-  // Particle settings
   const PARTICLE_COUNT = window.innerWidth < 768 ? 40 : 80;
   const particles = [];
 
@@ -128,7 +120,6 @@ function initParticles() {
       this.x += this.speedX;
       this.y += this.speedY;
 
-      // Pulse opacity
       if (this.growing) {
         this.opacity += this.opacitySpeed;
         if (this.opacity >= 0.6) this.growing = false;
@@ -137,7 +128,6 @@ function initParticles() {
         if (this.opacity <= 0.05) this.growing = true;
       }
 
-      // Wrap around edges
       if (this.x < 0) this.x = canvas.width;
       if (this.x > canvas.width) this.x = 0;
       if (this.y < 0) this.y = canvas.height;
@@ -152,12 +142,10 @@ function initParticles() {
     }
   }
 
-  // Create particles
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push(new Particle());
   }
 
-  // Draw connections between nearby particles
   function drawConnections() {
     const MAX_DISTANCE = 120;
 
@@ -180,7 +168,6 @@ function initParticles() {
     }
   }
 
-  // Animation loop
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -340,11 +327,9 @@ function revealOnScroll() {
     const elementTop = el.getBoundingClientRect().top;
 
     if (elementTop < windowHeight - 80) {
-      // Stagger sibling reveals
       setTimeout(() => {
         el.classList.add("active");
 
-        // Animate skill bars
         const skillFills = el.querySelectorAll(".skill-fill");
         skillFills.forEach((fill) => {
           const targetWidth = fill.getAttribute("data-width");
@@ -434,9 +419,19 @@ function onScroll() {
 }
 
 /* ----------------------------------------------------------
-   14. INIT
+   14. FORCE SCROLL TO TOP BEFORE PAGE UNLOADS
+---------------------------------------------------------- */
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
+/* ----------------------------------------------------------
+   15. INIT
 ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
+  // Scroll to top on every page load/reload
+  window.scrollTo(0, 0);
+
   // Initialize everything
   initParticles();
   initGlitch();
