@@ -558,8 +558,8 @@ img {
   color: var(--text-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  animation: fadeInUp 1s ease 1.5s forwards;
   opacity: 0;
+  animation: scrollIndicatorFade 1s ease 1.5s forwards;
 }
 
 .scroll-dot {
@@ -1322,6 +1322,17 @@ img {
   }
   50% {
     transform: translateY(6px);
+  }
+}
+
+@keyframes scrollIndicatorFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
