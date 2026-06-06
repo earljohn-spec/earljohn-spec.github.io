@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Earl John B. Plaza - Aspiring Full-Stack Developer portfolio. 
+      2nd Year BSIT Student specializing in Back-End Development and Database Management."
+    />
+    <title>Earl John B. Plaza | Aspiring Full-Stack Developer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Devicons for Skill Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- ============================================================
+         NAVIGATION
+    ============================================================ -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a href="#home" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>
+          EJP
+          <span class="logo-bracket">/&gt;</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#project" class="nav-link">Project</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger Menu (Mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <!-- Left: Text Content -->
+        <div class="hero-content">
+          <p class="hero-greeting">
+            <span class="greeting-line"></span>
+            Hello, World! 👋
+          </p>
+
+          <h1 class="hero-name">
+            Earl John
+            <span class="name-highlight">B. Plaza</span>
+          </h1>
+
+          <div class="hero-role">
+            <span class="role-prefix">I am an </span>
+            <span class="typing-text" id="typing-text"></span>
+            <span class="cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            A <strong>2nd Year BSIT Student</strong> at Davao Del Norte State
+            University, currently building my foundation in
+            <strong>Back-End Development</strong> and
+            <strong>Database Management</strong> — with my sights set on
+            becoming a Full-Stack Developer.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#project" class="btn btn-primary">
+              View My Work
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary"> Contact Me </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">1+</span>
+              <span class="stat-label">Project</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">4+</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">2nd</span>
+              <span class="stat-label">Year Student</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Profile Visual -->
+        <div class="hero-visual">
+          <div class="profile-wrapper">
+            <div class="profile-ring"></div>
+            <div class="profile-image-container">
+              <img
+                src="assets/images/profile.jpg"
+                alt="Earl John B. Plaza"
+                class="profile-image"
+                onerror="
+                  this.style.display = 'none';
+                  document.querySelector('.profile-fallback').style.display =
+                    'flex';
+                "
+              />
+              <!-- Fallback if no image -->
+              <div class="profile-fallback">
+                <span>EJP</span>
+              </div>
+            </div>
+
+            <!-- Floating Skill Badges -->
+            <div class="floating-badge badge-php">
+              <i class="devicon-php-plain"></i>
+              <span>PHP</span>
+            </div>
+            <div class="floating-badge badge-mysql">
+              <i class="devicon-mysql-plain"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="floating-badge badge-laravel">
+              <i class="devicon-laravel-plain"></i>
+              <span>Laravel</span>
+            </div>
+            <div class="floating-badge badge-java">
+              <i class="devicon-java-plain"></i>
+              <span>Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT SECTION
+    ============================================================ -->
+    <section class="about section" id="about">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <p class="section-tag">// get to know me</p>
+          <h2 class="section-title">About <span class="highlight">Me</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: Code Block Visual -->
+          <div class="about-code reveal">
+            <div class="code-window">
+              <div class="code-header">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="code-filename">about_me.java</span>
+              </div>
+              <div class="code-body">
+                <pre><code><span class="code-keyword">public class</span> <span class="code-class">EarlJohn</span> {
+
+  <span class="code-keyword">private</span> String name = 
+    <span class="code-string">"Earl John B. Plaza"</span>;
+
+  <span class="code-keyword">private</span> String school = 
+    <span class="code-string">"DNSC - BSIT 2nd Year"</span>;
+
+  <span class="code-keyword">private</span> String goal = 
+    <span class="code-string">"Full-Stack Developer"</span>;
+
+  <span class="code-keyword">private</span> String focus = 
+    <span class="code-string">"Back-End & Database"</span>;
+
+  <span class="code-keyword">private boolean</span> isLearning = 
+    <span class="code-boolean">true</span>;
+
+  <span class="code-keyword">public</span> String getMotivation() {
+    <span class="code-keyword">return</span> <span class="code-string">
+      "Building one line at a time."</span>;
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="about-content reveal">
+            <h3 class="about-subtitle">
+              Passionate about the logic behind the interface.
+            </h3>
+
+            <p class="about-text">
+              I am a <strong>2nd year BSIT student</strong> at Davao Del Norte
+              State University with a strong dedication to building a career
+              centered around logic and data. My ultimate goal is to become a
+              <strong>Full-Stack Developer.</strong>
+            </p>
+
+            <p class="about-text">
+              Currently, I am building my foundation in
+              <strong>Back-End Development and Database Management</strong>. I
+              enjoy the challenge of structuring data efficiently and creating
+              the "behind-the-scenes" logic that makes applications work.
+            </p>
+
+            <p class="about-text">
+              I am actively practicing every day to bridge the gap between
+              back-end logic and complete full-stack solutions — one project at
+              a time.
+            </p>
+
+            <!-- Info Cards -->
+            <div class="about-cards">
+              <div class="about-card">
+                <span class="about-card-icon">🎓</span>
+                <div>
+                  <strong>University</strong>
+                  <p>Davao Del Norte State College</p>
+                </div>
+              </div>
+              <div class="about-card">
+                <span class="about-card-icon">📚</span>
+                <div>
+                  <strong>Degree</strong>
+                  <p>BS Information Technology</p>
+                </div>
+              </div>
+              <div class="about-card">
+                <span class="about-card-icon">🎯</span>
+                <div>
+                  <strong>Focus</strong>
+                  <p>Back-End & Database Management</p>
+                </div>
+              </div>
+              <div class="about-card">
+                <span class="about-card-icon">🚀</span>
+                <div>
+                  <strong>Goal</strong>
+                  <p>Full-Stack Developer</p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="mailto:earljohnbplaza@gmail.com"
+              class="btn btn-primary about-btn"
+            >
+              Get In Touch →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS SECTION
+    ============================================================ -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <p class="section-tag">// what i work with</p>
+          <h2 class="section-title">
+            My <span class="highlight">Skills</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <!-- Back-End Focus -->
+        <div class="skills-group reveal">
+          <div class="skills-group-header">
+            <span class="skills-group-icon">⚙️</span>
+            <h3>Back-End & Database</h3>
+            <span class="skills-group-tag">Current Focus</span>
+          </div>
+          <div class="skills-grid">
+            <!-- Java -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-java-plain colored"></i>
+              </div>
+              <h4 class="skill-name">Java</h4>
+              <p class="skill-desc">OOP & Logic Building</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="65%"></div>
+              </div>
+            </div>
+
+            <!-- PHP -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-php-plain colored"></i>
+              </div>
+              <h4 class="skill-name">PHP</h4>
+              <p class="skill-desc">Server-Side Scripting</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="70%"></div>
+              </div>
+            </div>
+
+            <!-- Laravel -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-laravel-plain colored"></i>
+              </div>
+              <h4 class="skill-name">Laravel</h4>
+              <p class="skill-desc">MVC Framework</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="55%"></div>
+              </div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-mysql-plain colored"></i>
+              </div>
+              <h4 class="skill-name">MySQL</h4>
+              <p class="skill-desc">Relational Databases</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="72%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Front-End Growth -->
+        <div class="skills-group reveal">
+          <div class="skills-group-header">
+            <span class="skills-group-icon">🌱</span>
+            <h3>Front-End</h3>
+            <span class="skills-group-tag growth">Growth Area</span>
+          </div>
+          <div class="skills-grid">
+            <!-- HTML5 -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-html5-plain colored"></i>
+              </div>
+              <h4 class="skill-name">HTML5</h4>
+              <p class="skill-desc">Semantic Markup</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="75%"></div>
+              </div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class="devicon-css3-plain colored"></i>
+              </div>
+              <h4 class="skill-name">CSS3</h4>
+              <p class="skill-desc">Styling & Layouts</p>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="68%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECT SECTION
+    ============================================================ -->
+    <section class="project section" id="project">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <p class="section-tag">// what i've built</p>
+          <h2 class="section-title">
+            Featured <span class="highlight">Project</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="project-card reveal">
+          <!-- Left: Project Info -->
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-number">01</span>
+              <span class="project-tag">Web Application</span>
+              <span class="project-sdg">🌱 SDG 7</span>
+            </div>
+
+            <h3 class="project-title">
+              Solar Panel Installation Request and Tracking System
+            </h3>
+
+            <p class="project-description">
+              A web-based application that addresses gaps in renewable energy
+              accessibility. Provides a centralized platform for online
+              requests, administrative reviews, and
+              <strong>automated eligibility scoring</strong> to prioritize
+              installations fairly based on data-driven metrics.
+            </p>
+
+            <!-- Key Features -->
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">✅</span>
+                Online installation request submission system
+              </li>
+              <li>
+                <span class="feature-icon">✅</span>
+                Admin dashboard for review and management
+              </li>
+              <li>
+                <span class="feature-icon">✅</span>
+                Automated eligibility scoring mechanism
+              </li>
+              <li>
+                <span class="feature-icon">✅</span>
+                Transparent, data-driven prioritization
+              </li>
+              <li>
+                <span class="feature-icon">✅</span>
+                Real-time installation tracking
+              </li>
+            </ul>
+
+            <!-- Tech Stack -->
+            <div class="project-tech">
+              <span class="tech-label">Tech Stack:</span>
+              <div class="tech-tags">
+                <span class="tech-tag">
+                  <i class="devicon-php-plain"></i> PHP
+                </span>
+                <span class="tech-tag">
+                  <i class="devicon-mysql-plain"></i> MySQL
+                </span>
+                <span class="tech-tag">
+                  <i class="devicon-html5-plain"></i> HTML5
+                </span>
+                <span class="tech-tag">
+                  <i class="devicon-css3-plain"></i> CSS3
+                </span>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="project-cta">
+              <a
+                href="https://github.com/earljohn-spec/SOLAR-PANEL-INSTALLATION-REQUEST-AND-TRACKING-SYSTEM-IN-SUPPORT-OF-SDG-7"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                View Repository
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Project Preview -->
+          <div class="project-preview">
+            <div class="preview-window">
+              <div class="preview-header">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="preview-url">solar-tracking-system.php</span>
+              </div>
+              <div class="preview-body">
+                <img
+                  src="assets/images/project-preview.png"
+                  alt="Solar Panel System Preview"
+                  class="preview-image"
+                  onerror="
+                    this.style.display = 'none';
+                    document.querySelector('.preview-fallback').style.display =
+                      'flex';
+                  "
+                />
+                <!-- Fallback if no screenshot -->
+                <div class="preview-fallback">
+                  <div class="fallback-content">
+                    <span class="fallback-icon">☀️</span>
+                    <p>Solar Panel</p>
+                    <p>Installation System</p>
+                    <span class="fallback-sub">SDG 7 — Clean Energy</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+    ============================================================ -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <p class="section-tag">// let's connect</p>
+          <h2 class="section-title">
+            Contact <span class="highlight">Me</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Info -->
+          <div class="contact-info reveal">
+            <h3 class="contact-subtitle">
+              Open to opportunities and collaborations.
+            </h3>
+            <p class="contact-text">
+              Whether you have a project idea, a question, or just want to
+              connect — my inbox is always open. I am actively looking to grow,
+              learn, and contribute.
+            </p>
+
+            <!-- Contact Cards -->
+            <div class="contact-cards">
+              <a href="mailto:earljohnbplaza@gmail.com" class="contact-card">
+                <div class="contact-card-icon">📧</div>
+                <div class="contact-card-info">
+                  <strong>Email</strong>
+                  <span>earljohnbplaza@gmail.com</span>
+                </div>
+                <span class="contact-card-arrow">→</span>
+              </a>
+
+              <a
+                href="https://github.com/earljohn-spec"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-card"
+              >
+                <div class="contact-card-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    />
+                  </svg>
+                </div>
+                <div class="contact-card-info">
+                  <strong>GitHub</strong>
+                  <span>earljohn-spec</span>
+                </div>
+                <span class="contact-card-arrow">→</span>
+              </a>
+
+              <a href="tel:+639242947855" class="contact-card">
+                <div class="contact-card-icon">📱</div>
+                <div class="contact-card-info">
+                  <strong>Phone</strong>
+                  <span>0924 294 7855</span>
+                </div>
+                <span class="contact-card-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Terminal Visual -->
+          <div class="contact-terminal reveal">
+            <div class="terminal-window">
+              <div class="terminal-header">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="terminal-title">terminal</span>
+              </div>
+              <div class="terminal-body">
+                <p>
+                  <span class="t-user">earl@portfolio</span>
+                  <span class="t-separator">:</span>
+                  <span class="t-dir">~</span>
+                  <span class="t-prompt">$</span>
+                  <span class="t-cmd"> contact --init</span>
+                </p>
+                <p class="t-output">Initializing connection...</p>
+                <p class="t-output">Looking for opportunities...</p>
+                <p class="t-output success">✓ Ready to collaborate!</p>
+                <br />
+                <p>
+                  <span class="t-user">earl@portfolio</span>
+                  <span class="t-separator">:</span>
+                  <span class="t-dir">~</span>
+                  <span class="t-prompt">$</span>
+                  <span class="t-cmd"> status --check</span>
+                </p>
+                <p class="t-output success">✓ Available for internships</p>
+                <p class="t-output success">✓ Open to collaborations</p>
+                <p class="t-output success">✓ Actively learning daily</p>
+                <br />
+                <p>
+                  <span class="t-user">earl@portfolio</span>
+                  <span class="t-separator">:</span>
+                  <span class="t-dir">~</span>
+                  <span class="t-prompt">$</span>
+                  <span class="t-cmd blinking-cursor"> _</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+      <div class="footer-container">
+        <p class="footer-text">
+          Designed & Built by
+          <span class="footer-name">Earl John B. Plaza</span>
+        </p>
+        <p class="footer-sub">
+          Built with HTML, CSS & JavaScript · Hosted on GitHub Pages
+        </p>
+        <a href="#home" class="back-to-top" aria-label="Back to top">↑</a>
+      </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
