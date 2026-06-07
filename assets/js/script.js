@@ -199,10 +199,10 @@ function initProfileRing() {
    6. TYPING ANIMATION
 ---------------------------------------------------------- */
 const typingRoles = [
-  "Aspiring Full-Stack Developer",
-  "Back-End Enthusiast",
-  "Database Management Student",
-  "BSIT 2nd Year Student",
+  { prefix: "I am an ", text: "Aspiring Full-Stack Developer" },
+  { prefix: "I am a ", text: "Back-End Enthusiast" },
+  { prefix: "I am a ", text: "Database Management Student" },
+  { prefix: "I am a ", text: "BSIT 2nd Year Student" },
 ];
 
 let roleIndex = 0;
@@ -210,23 +210,29 @@ let charIndex = 0;
 let isDeleting = false;
 
 const typingEl = document.getElementById("typing-text");
+const prefixEl = document.getElementById("role-prefix");
 
 function typeText() {
-  if (!typingEl) return;
+  if (!typingEl || !prefixEl) return;
 
   const currentRole = typingRoles[roleIndex];
 
+  // Update prefix when starting a new role
+  if (!isDeleting && charIndex === 0) {
+    prefixEl.textContent = currentRole.prefix;
+  }
+
   if (isDeleting) {
-    typingEl.textContent = currentRole.substring(0, charIndex - 1);
+    typingEl.textContent = currentRole.text.substring(0, charIndex - 1);
     charIndex--;
   } else {
-    typingEl.textContent = currentRole.substring(0, charIndex + 1);
+    typingEl.textContent = currentRole.text.substring(0, charIndex + 1);
     charIndex++;
   }
 
   let speed = isDeleting ? 45 : 95;
 
-  if (!isDeleting && charIndex === currentRole.length) {
+  if (!isDeleting && charIndex === currentRole.text.length) {
     speed = 2000;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
