@@ -4,7 +4,7 @@
 
 **Focusing on Back-End Development & Database Management**
 
-[🌐 Portfolio](https://earljohn-spec.github.io) | [📧 Email](mailto:earljohnbplaza@gmail.com) | [🐙 GitHub](https://github.com/earljohn-spec)
+[Portfolio](https://earljohn-spec.github.io) | [Email](mailto:earljohnbplaza@gmail.com) | [GitHub](https://github.com/earljohn-spec)
 
 ---
 
@@ -16,7 +16,7 @@ Currently, I am building my foundation in **Back-End Development and Database Ma
 
 ---
 
-## 🛠️ Skills
+## Skills
 
 ### **Back-End & Database (Current Focus)**
 
@@ -30,7 +30,7 @@ Currently, I am building my foundation in **Back-End Development and Database Ma
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-### **Tools & Ecosystem**
+### **Tools & Ecosystem (From Projects)**
 
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Alpine.js](https://img.shields.io/badge/alpine.js-%238BC0D0.svg?style=for-the-badge&logo=alpine.js&logoColor=white)
@@ -39,7 +39,7 @@ Currently, I am building my foundation in **Back-End Development and Database Ma
 
 ---
 
-## 📂 Featured Projects
+## Featured Projects
 
 ### 01 — Solar Panel Installation Request and Tracking System
 
@@ -59,38 +59,27 @@ _A professional, fully-featured school campus management system_
 
 Designed for small to medium schools, college departments, and CS/IT students needing a complete capstone or thesis project. Features student enrollment, grading, attendance tracking, library, and finance modules.
 
-- **Tech Stack:**
-
-  | Technology   | Version |
-  | ------------ | ------- |
-  | PHP          | 8.2+    |
-  | Laravel      | 13.x    |
-  | Filament     | 5.x     |
-  | MySQL        | 8.0+    |
-  | Tailwind CSS | 4.x     |
-  | Alpine.js    | 3.x     |
-  | Vite         | 8.x     |
-
+- **Tech Stack:** PHP 8.2+, Laravel 13.x, Filament 5.x, MySQL 8.0+, Tailwind CSS 4.x, Alpine.js 3.x, Vite 8.x
 - **Key Features:**
   - Student enrollment and records management
   - Grading system with automated computation
   - Attendance tracking per subject and student
   - Library module for resource management
   - Finance module for fees and payments
-- ⚡ Powered by Filament 5.x Admin Panel
+- Powered by Filament 5.x Admin Panel
 - 🔗 [**View Repository**](https://github.com/earljohn-spec/EduCampus---School-Management-System-v1.0.0)
 
 ---
 
-## 🌐 Portfolio
+## Portfolio
 
-Check out my live portfolio built with **HTML, CSS & JavaScript**:
+Check out my live portfolio:
 
-👉 **[earljohn-spec.github.io](https://earljohn-spec.github.io)**
+**[earljohn-spec.github.io](https://earljohn-spec.github.io)**
 
 ---
 
-## 📬 Contact Me
+## Contact Me
 
 - **Email:** [earljohnbplaza@gmail.com](mailto:earljohnbplaza@gmail.com)
 - **GitHub:** [earljohn-spec](https://github.com/earljohn-spec)
