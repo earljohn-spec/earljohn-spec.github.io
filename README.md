@@ -41,7 +41,7 @@ Currently, I am building my foundation in **Back-End Development and Database Ma
 
 ## Featured Projects
 
-### 01 — Solar Panel Installation Request and Tracking System
+### Solar Panel Installation Request and Tracking System
 
 _An application in support of SDG 7 (Affordable and Clean Energy)_
 
@@ -53,7 +53,7 @@ A web-based application that addresses gaps in renewable energy accessibility. I
 
 ---
 
-### 02 — EduCampus — Complete School Management System
+### EduCampus — Complete School Management System
 
 _A professional, fully-featured school campus management system_
 
