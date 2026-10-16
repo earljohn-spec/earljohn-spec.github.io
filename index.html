@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,10 +62,20 @@
 
         /* Hero */
         .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             padding: 5rem 0 3.5rem;
         }
 
-        .hero h1 {
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid #30363d;
+            flex-shrink: 0;
+        }
+        .hero-text h1 {
             font-size: 2.2rem;
             color: #f0f6fc;
             margin-bottom: 0.75rem;
@@ -201,8 +211,18 @@
 
         @media (max-width: 480px) {
             .stack-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 1.7rem; }
-            .hero { padding: 3.5rem 0 2.5rem; }
+            .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid #30363d;
+            flex-shrink: 0;
+        }
+        .hero-text h1 { font-size: 1.7rem; }
+            .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem; padding: 3.5rem 0 2.5rem; }
             .topbar-name { font-size: 0.8rem; }
         }
     </style>
@@ -223,9 +243,12 @@
     <div class="container">
 
         <header class="hero">
+            <img class="avatar" src="./photo.png" alt="Earl John B. Plaza" width="96" height="96">
+            <div class="hero-text">
             <h1>Earl John B. Plaza</h1>
             <p>3rd year BSIT at Davao Del Norte State University.
                Backend systems, distributed data structures, retrieval pipelines.</p>
+        </div>
         </header>
 
         <section id="projects">
