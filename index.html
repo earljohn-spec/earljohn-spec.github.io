@@ -1,259 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earl John B. Plaza</title>
     <style>
+        :root[data-theme="dark"] {
+            --bg: #0d1117;
+            --bg-gradient: #0a0e14;
+            --surface: #161b22;
+            --border: #21262d;
+            --border-subtle: #30363d;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --text-faint: #6e7681;
+            --text-bright: #f0f6fc;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --accent-bar: #1f6feb;
+            --topbar-bg: rgba(13, 17, 23, 0.85);
+        }
+        :root[data-theme="light"] {
+            --bg: #ffffff;
+            --bg-gradient: #f6f8fa;
+            --surface: #f6f8fa;
+            --border: #d0d7de;
+            --border-subtle: #d8dee4;
+            --text: #24292f;
+            --text-muted: #57606a;
+            --text-faint: #6e7781;
+            --text-bright: #1f2328;
+            --accent: #0969da;
+            --accent-hover: #0550ae;
+            --accent-bar: #0969da;
+            --topbar-bg: rgba(255, 255, 255, 0.85);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-gradient) 100%);
             background-attachment: fixed;
-            color: #c9d1d9;
+            color: var(--text);
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
-
-        a { color: #58a6ff; text-decoration: none; transition: color 0.2s; }
-        a:hover { color: #79c0ff; text-decoration: underline; }
-
-        /* Sticky nav */
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
         .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid #21262d;
+            position: sticky; top: 0; z-index: 10;
+            background: var(--topbar-bg);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
             padding: 0.75rem 1.5rem;
         }
-
         .topbar-inner {
-            max-width: 720px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 720px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
         }
-
         .topbar-name {
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.9rem;
-            color: #f0f6fc;
+            font-size: 0.9rem; color: var(--text-bright);
         }
-
-        .topbar-links {
-            display: flex;
-            gap: 1.25rem;
-            font-size: 0.85rem;
+        .topbar-right { display: flex; align-items: center; gap: 1.25rem; }
+        .topbar-links { display: flex; gap: 1.25rem; font-size: 0.85rem; }
+        .topbar-links a { color: var(--text-muted); }
+        .topbar-links a:hover { color: var(--accent); text-decoration: none; }
+        .theme-toggle {
+            background: none; border: 1px solid var(--border); border-radius: 6px;
+            color: var(--text-muted); cursor: pointer; font-size: 1rem;
+            padding: 0.3rem 0.5rem; line-height: 1;
+            transition: color 0.2s, border-color 0.2s;
         }
-
-        .topbar-links a { color: #8b949e; }
-        .topbar-links a:hover { color: #58a6ff; text-decoration: none; }
-
-        /* Main content */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Hero */
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            padding: 5rem 0 3.5rem;
-        }
-
+        .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+        .hero { padding: 5rem 0 3.5rem; display: flex; align-items: center; gap: 2rem; }
         .avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            border: 2px solid #30363d;
-            flex-shrink: 0;
+            width: 96px; height: 96px; border-radius: 50%;
+            border: 2px solid var(--border-subtle); flex-shrink: 0;
         }
         .hero-text h1 {
-            font-size: 2.2rem;
-            color: #f0f6fc;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
+            font-size: 2.2rem; color: var(--text-bright);
+            margin-bottom: 0.75rem; letter-spacing: -0.02em;
         }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #8b949e;
-            max-width: 560px;
-        }
-
-        /* Sections */
-        section {
-            padding: 3rem 0;
-            border-top: 1px solid #21262d;
-        }
-
+        .hero-text p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; }
+        section { padding: 3rem 0; border-top: 1px solid var(--border); }
         h2 {
-            font-size: 0.8rem;
-            color: #8b949e;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
-            font-weight: 600;
+            font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 2rem; font-weight: 600;
         }
-
-        /* Project cards */
         .project {
-            background: #161b22;
-            border: 1px solid #21262d;
-            border-left: 3px solid #1f6feb;
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1.25rem;
+            background: var(--surface); border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-bar); border-radius: 6px;
+            padding: 1.5rem; margin-bottom: 1.25rem;
             transition: border-color 0.2s, transform 0.2s;
         }
-
-        .project:hover {
-            border-left-color: #58a6ff;
-            transform: translateX(4px);
-        }
-
+        .project:hover { border-left-color: var(--accent); transform: translateX(4px); }
         .project:last-child { margin-bottom: 0; }
-
         .project h3 {
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 1.05rem;
-            color: #58a6ff;
-            margin-bottom: 0.15rem;
+            font-size: 1.05rem; color: var(--accent); margin-bottom: 0.15rem;
         }
-
-        .project .subtitle {
-            font-size: 0.85rem;
-            color: #6e7681;
-            margin-bottom: 0.75rem;
-        }
-
-        .project p {
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-            color: #c9d1d9;
-        }
-
-        .project ul {
-            list-style: none;
-            font-size: 0.85rem;
-            color: #8b949e;
-        }
-
-        .project ul li {
-            padding: 0.15rem 0;
-        }
-
-        .project ul li::before {
-            content: "\2014";
-            margin-right: 0.5rem;
-            color: #30363d;
-        }
-
-        /* Stack grid */
-        .stack-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
+        .project .subtitle { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0.75rem; }
+        .project p { font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .project ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
+        .project ul li { padding: 0.15rem 0; }
+        .project ul li::before { content: "\2014"; margin-right: 0.5rem; color: var(--border-subtle); }
+        .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .stack-item {
-            background: #161b22;
-            border: 1px solid #21262d;
-            border-radius: 6px;
-            padding: 1rem 1.25rem;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 6px; padding: 1rem 1.25rem;
         }
-
         .stack-item dt {
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.7rem;
-            color: #6e7681;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.3rem;
+            font-size: 0.7rem; color: var(--text-faint); text-transform: uppercase;
+            letter-spacing: 0.08em; margin-bottom: 0.3rem;
         }
-
-        .stack-item dd {
-            font-size: 0.9rem;
-            color: #c9d1d9;
-        }
-
-        /* Contact */
+        .stack-item dd { font-size: 0.9rem; }
         .contact-list { list-style: none; }
-
-        .contact-list li {
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-        }
-
+        .contact-list li { margin-bottom: 0.75rem; font-size: 0.95rem; }
         .contact-list span {
-            display: inline-block;
-            width: 5rem;
-            color: #6e7681;
+            display: inline-block; width: 5rem; color: var(--text-faint);
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
             font-size: 0.8rem;
         }
-
-        /* Footer */
         .footer {
-            padding: 2rem 0 3rem;
-            border-top: 1px solid #21262d;
-            font-size: 0.8rem;
-            color: #484f58;
-            text-align: center;
+            padding: 2rem 0 3rem; border-top: 1px solid var(--border);
+            font-size: 0.8rem; color: var(--text-faint); text-align: center;
         }
-
         @media (max-width: 480px) {
+            .hero { flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 3.5rem 0 2.5rem; }
+            .avatar { width: 72px; height: 72px; }
+            .hero-text h1 { font-size: 1.7rem; }
             .stack-grid { grid-template-columns: 1fr; }
-            .avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            border: 2px solid #30363d;
-            flex-shrink: 0;
-        }
-        .hero-text h1 { font-size: 1.7rem; }
-            .hero {
-            display: flex;
-            align-items: center;
-            gap: 2rem; padding: 3.5rem 0 2.5rem; }
             .topbar-name { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
-
     <nav class="topbar">
         <div class="topbar-inner">
             <span class="topbar-name">earljohn-spec</span>
-            <div class="topbar-links">
-                <a href="#projects">Projects</a>
-                <a href="#stack">Stack</a>
-                <a href="#contact">Contact</a>
+            <div class="topbar-right">
+                <div class="topbar-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#stack">Stack</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
             </div>
         </div>
     </nav>
-
     <div class="container">
-
         <header class="hero">
             <img class="avatar" src="./photo.png" alt="Earl John B. Plaza" width="96" height="96">
             <div class="hero-text">
-            <h1>Earl John B. Plaza</h1>
-            <p>3rd year BSIT at Davao Del Norte State University.
-               Backend systems, distributed data structures, retrieval pipelines.</p>
-        </div>
+                <h1>Earl John B. Plaza</h1>
+                <p>3rd year BSIT at Davao Del Norte State University.
+                   Backend systems, distributed data structures, retrieval pipelines.</p>
+            </div>
         </header>
-
         <section id="projects">
             <h2>Projects</h2>
-
             <div class="project">
                 <h3>rfc-rag-pipeline</h3>
                 <div class="subtitle">Hybrid Retrieval Engine for IETF RFCs</div>
@@ -267,7 +174,6 @@
                     <li>Retrieval bias documented via ADR</li>
                 </ul>
             </div>
-
             <div class="project">
                 <h3>convergence-crdt</h3>
                 <div class="subtitle">Op-Based CRDT for Collaborative Text</div>
@@ -282,7 +188,6 @@
                 </ul>
             </div>
         </section>
-
         <section id="stack">
             <h2>Stack</h2>
             <div class="stack-grid">
@@ -294,7 +199,6 @@
                 <dl class="stack-item"><dt>Tooling</dt><dd>Git, pytest, mypy, ruff, Vite</dd></dl>
             </div>
         </section>
-
         <section id="contact">
             <h2>Contact</h2>
             <ul class="contact-list">
@@ -302,12 +206,27 @@
                 <li><span>github</span> <a href="https://github.com/earljohn-spec">earljohn-spec</a></li>
             </ul>
         </section>
-
         <footer class="footer">
-            Built with plain HTML and CSS. No frameworks, no JavaScript.
+            Built with plain HTML and CSS. No frameworks.
         </footer>
-
     </div>
-
+    <script>
+        (function() {
+            var btn = document.getElementById('theme-toggle');
+            var root = document.documentElement;
+            var saved = localStorage.getItem('theme');
+            if (saved) root.setAttribute('data-theme', saved);
+            function updateIcon() {
+                btn.textContent = root.getAttribute('data-theme') === 'dark' ? '\u2600' : '\u263E';
+            }
+            updateIcon();
+            btn.addEventListener('click', function() {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                updateIcon();
+            });
+        })();
+    </script>
 </body>
 </html>
