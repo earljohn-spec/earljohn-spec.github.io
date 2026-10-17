@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earl John B. Plaza</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙</text></svg>">
     <style>
         :root[data-theme="dark"] {
             --bg: #0d1117;
@@ -39,7 +40,6 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background: linear-gradient(180deg, var(--bg) 0%, var(--bg-gradient) 100%);
-            background-attachment: fixed;
             color: var(--text);
             line-height: 1.6;
             transition: background 0.3s, color 0.3s;
@@ -105,6 +105,10 @@
         .project ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
         .project ul li { padding: 0.15rem 0; }
         .project ul li::before { content: "\2014"; margin-right: 0.5rem; color: var(--border-subtle); }
+        .project .private {
+            font-size: 0.8rem; color: var(--text-faint);
+            font-style: italic; margin-top: 0.75rem;
+        }
         .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .stack-item {
             background: var(--surface); border: 1px solid var(--border);
@@ -123,9 +127,11 @@
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
             font-size: 0.8rem;
         }
-            padding: 2rem 0 3rem; border-top: 1px solid var(--border);
-            font-size: 0.8rem; color: var(--text-faint); text-align: center;
+        .cta {
+            padding: 3rem 0; border-top: 1px solid var(--border);
+            text-align: center; color: var(--text-muted); font-size: 0.95rem;
         }
+        .cta a { font-weight: 600; }
         @media (max-width: 480px) {
             .hero { flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 3.5rem 0 2.5rem; }
             .avatar { width: 72px; height: 72px; }
@@ -172,6 +178,7 @@
                     <li>Python library, no HTTP server or daemon</li>
                     <li>Retrieval bias documented via ADR</li>
                 </ul>
+                <div class="private">Private — available on request.</div>
             </div>
             <div class="project">
                 <h3>convergence-crdt</h3>
@@ -185,6 +192,7 @@
                     <li>Optional WebSocket transport; zero core dependencies</li>
                     <li>SQLite checkpoint persistence; opt-in tombstone GC</li>
                 </ul>
+                <div class="private">Private — available on request.</div>
             </div>
         </section>
         <section id="stack">
@@ -201,10 +209,16 @@
         <section id="contact">
             <h2>Contact</h2>
             <ul class="contact-list">
+                <li><span>location</span> Davao, Philippines</li>
                 <li><span>email</span> <a href="mailto:earljohnbplaza@gmail.com">earljohnbplaza@gmail.com</a></li>
                 <li><span>github</span> <a href="https://github.com/earljohn-spec">earljohn-spec</a></li>
+                <li><span>linkedin</span> <a href="https://linkedin.com/in/earljohnbplaza">earljohnbplaza</a></li>
             </ul>
         </section>
+        <div class="cta">
+            Open to backend internships and junior developer roles.
+            <a href="mailto:earljohnbplaza@gmail.com">Get in touch.</a>
+        </div>
     </div>
     <script>
         (function() {
