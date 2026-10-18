@@ -194,7 +194,32 @@
                 </ul>
                 <div class="private">Private — available on request.</div>
             </div>
-        </section>
+                    <div class="project">
+                <h3>stockflow</h3>
+                <div class="subtitle">Inventory Management and POS System</div>
+                <p>Laravel 13 inventory and point-of-sale system for small retail.
+                   Computed stock from transaction audit log, atomic checkout,
+                   role-based access (admin/cashier), and sales reporting with CSV export.</p>
+                <ul>
+                    <li>32 Pest feature tests covering auth, CRUD, POS, inventory, reports, security</li>
+                    <li>POS checkout with Alpine.js cart and DB::transaction rollback</li>
+                    <li>Security audit passed: rate limiting, server-side pricing, RBAC</li>
+                </ul>
+                <div class="private">Private — available on request.</div>
+            </div>
+            <div class="project">
+                <h3>salary-predictor</h3>
+                <div class="subtitle">ML Salary Prediction with SHAP Explainability</div>
+                <p>End-to-end ML pipeline: XGBoost regressor (R2=0.976) trained on 6,700 rows,
+                   SHAP explanations per prediction, and a FastAPI serving endpoint with
+                   Pydantic v2 validation. Model serialized as native .ubj (no pickle).</p>
+                <ul>
+                    <li>15 pytest tests: data pipeline, inference, API integration</li>
+                    <li>FastAPI lifespan hook for single-load model serving</li>
+                    <li>SHAP summary, dependence, and waterfall plots</li>
+                </ul>
+                <div class="private">Private — available on request.</div>
+            </div></section>
         <section id="stack">
             <h2>Stack</h2>
             <div class="stack-grid">
@@ -203,6 +228,7 @@
                 <dl class="stack-item"><dt>Retrieval</dt><dd>sentence-transformers, BM25, RRF</dd></dl>
                 <dl class="stack-item"><dt>Distributed</dt><dd>CRDTs, version vectors, Lamport clocks</dd></dl>
                 <dl class="stack-item"><dt>Frontend</dt><dd>HTML, CSS, Tailwind, Alpine.js</dd></dl>
+                <dl class="stack-item"><dt>ML/AI</dt><dd>XGBoost, SHAP, scikit-learn, FastAPI</dd></dl>
                 <dl class="stack-item"><dt>Tooling</dt><dd>Git, pytest, mypy, ruff, Vite</dd></dl>
             </div>
         </section>
