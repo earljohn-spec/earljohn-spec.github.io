@@ -1,268 +1,267 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earl John B. Plaza</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙</text></svg>">
-    <style>
-        :root[data-theme="dark"] {
-            --bg: #0d1117;
-            --bg-gradient: #0a0e14;
-            --surface: #161b22;
-            --border: #21262d;
-            --border-subtle: #30363d;
-            --text: #c9d1d9;
-            --text-muted: #8b949e;
-            --text-faint: #6e7681;
-            --text-bright: #f0f6fc;
-            --accent: #58a6ff;
-            --accent-hover: #79c0ff;
-            --accent-bar: #1f6feb;
-            --topbar-bg: rgba(13, 17, 23, 0.85);
-        }
-        :root[data-theme="light"] {
-            --bg: #ffffff;
-            --bg-gradient: #f6f8fa;
-            --surface: #f6f8fa;
-            --border: #d0d7de;
-            --border-subtle: #d8dee4;
-            --text: #24292f;
-            --text-muted: #57606a;
-            --text-faint: #6e7781;
-            --text-bright: #1f2328;
-            --accent: #0969da;
-            --accent-hover: #0550ae;
-            --accent-bar: #0969da;
-            --topbar-bg: rgba(255, 255, 255, 0.85);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-gradient) 100%);
-            color: var(--text);
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
-        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--accent-hover); text-decoration: underline; }
-        .topbar {
-            position: sticky; top: 0; z-index: 10;
-            background: var(--topbar-bg);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0.75rem 1.5rem;
-        }
-        .topbar-inner {
-            max-width: 720px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .topbar-name {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.9rem; color: var(--text-bright);
-        }
-        .topbar-right { display: flex; align-items: center; gap: 1.25rem; }
-        .topbar-links { display: flex; gap: 1.25rem; font-size: 0.85rem; }
-        .topbar-links a { color: var(--text-muted); }
-        .topbar-links a:hover { color: var(--accent); text-decoration: none; }
-        .theme-toggle {
-            background: none; border: 1px solid var(--border); border-radius: 6px;
-            color: var(--text-muted); cursor: pointer; font-size: 1rem;
-            padding: 0.3rem 0.5rem; line-height: 1;
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
-        .hero { padding: 5rem 0 3.5rem; display: flex; align-items: center; gap: 2rem; }
-        .avatar {
-            width: 96px; height: 96px; border-radius: 50%;
-            border: 2px solid var(--border-subtle); flex-shrink: 0;
-        }
-        .hero-text h1 {
-            font-size: 2.2rem; color: var(--text-bright);
-            margin-bottom: 0.75rem; letter-spacing: -0.02em;
-        }
-        .hero-text p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; }
-        section { padding: 3rem 0; border-top: 1px solid var(--border); }
-        h2 {
-            font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;
-            letter-spacing: 0.1em; margin-bottom: 2rem; font-weight: 600;
-        }
-        .project {
-            background: var(--surface); border: 1px solid var(--border);
-            border-left: 3px solid var(--accent-bar); border-radius: 6px;
-            padding: 1.5rem; margin-bottom: 1.25rem;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        .project:hover { border-left-color: var(--accent); transform: translateX(4px); }
-        .project:last-child { margin-bottom: 0; }
-        .project h3 {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 1.05rem; color: var(--accent); margin-bottom: 0.15rem;
-        }
-        .project .subtitle { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0.75rem; }
-        .project p { font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .project ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
-        .project ul li { padding: 0.15rem 0; }
-        .project ul li::before { content: "\2014"; margin-right: 0.5rem; color: var(--border-subtle); }
-        .project .private {
-            font-size: 0.8rem; color: var(--text-faint);
-            font-style: italic; margin-top: 0.75rem;
-        }
-        .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .stack-item {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 6px; padding: 1rem 1.25rem;
-        }
-        .stack-item dt {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.7rem; color: var(--text-faint); text-transform: uppercase;
-            letter-spacing: 0.08em; margin-bottom: 0.3rem;
-        }
-        .stack-item dd { font-size: 0.9rem; }
-        .contact-list { list-style: none; }
-        .contact-list li { margin-bottom: 0.75rem; font-size: 0.95rem; }
-        .contact-list span {
-            display: inline-block; width: 5rem; color: var(--text-faint);
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.8rem;
-        }
-        .cta {
-            padding: 3rem 0; border-top: 1px solid var(--border);
-            text-align: center; color: var(--text-muted); font-size: 0.95rem;
-        }
-        .cta a { font-weight: 600; }
-        @media (max-width: 480px) {
-            .hero { flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 3.5rem 0 2.5rem; }
-            .avatar { width: 72px; height: 72px; }
-            .hero-text h1 { font-size: 1.7rem; }
-            .stack-grid { grid-template-columns: 1fr; }
-            .topbar-name { font-size: 0.8rem; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Earl John Plaza — Full-Stack Developer</title>
+<meta name="description" content="Laravel full-stack developer specializing in POS, inventory systems, and secure web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg-subtle:#f6f6f7;--text:#202223;--text-subtle:#6d7175;
+  --border:#e1e3e5;--accent:#008060;--accent-hover:#006e52;--link:#2c6ecb;
+  --radius:8px;--shadow:0 1px 2px rgba(0,0,0,0.06);--shadow-hover:0 4px 12px rgba(0,0,0,0.1);
+  --max-w:1080px;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.skip{position:absolute;top:-100%;left:16px;z-index:100;background:var(--accent);color:#fff;padding:8px 16px;border-radius:0 0 6px 6px;font-size:14px}
+.skip:focus{top:0}
+
+/* NAV — shopify.com nav pattern */
+nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:18px;color:var(--text);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--text-subtle);font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+
+/* HERO — shopify.com homepage pattern */
+.hero{max-width:var(--max-w);margin:0 auto;padding:96px 24px 80px;text-align:center}
+.hero h1{font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:var(--text);margin-bottom:16px}
+.hero .subtitle{font-size:clamp(18px,2.5vw,22px);color:var(--text-subtle);font-weight:400;margin-bottom:24px}
+.hero .tagline{font-size:16px;color:var(--text-subtle);max-width:560px;margin:0 auto 32px}
+.hero-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:var(--radius);font-size:14px;font-weight:600;transition:all 0.15s ease}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover);text-decoration:none;color:#fff}
+.btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{background:var(--bg-subtle);text-decoration:none}
+
+/* SECTIONS — shopify.com/pricing spacing */
+section{padding:80px 24px}
+section:nth-child(even){background:var(--bg-subtle)}
+.section-inner{max-width:var(--max-w);margin:0 auto}
+.section-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.02em;margin-bottom:48px;color:var(--text)}
+
+/* PROJECT CARDS — themes.shopify.com pattern */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow 0.2s ease,transform 0.2s ease}
+.card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.card-body{padding:20px}
+.card-body h3{font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-0.01em}
+.card-body p{font-size:14px;color:var(--text-subtle);margin-bottom:12px;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:500;padding:3px 8px;border-radius:4px;background:var(--bg-subtle);color:var(--text-subtle);border:1px solid var(--border)}
+.metrics{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;color:var(--text-subtle)}
+
+/* SKILLS — polaris.shopify.com + admin settings pattern */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px}
+.skill-group h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-subtle);margin-bottom:12px}
+.skill-group .tags{gap:8px}
+.skill-group .tag{font-size:13px;padding:5px 10px}
+.about-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px;max-width:640px}
+.about-box p{font-size:15px;color:var(--text-subtle);line-height:1.7}
+
+/* CONTACT — shopify.com footer pattern */
+.contact{text-align:center}
+.contact p{font-size:16px;color:var(--text-subtle);margin-bottom:8px}
+.contact .email{font-size:18px;font-weight:600;color:var(--link)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-size:13px;color:var(--text-subtle)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .grid,.skill-grid{grid-template-columns:1fr}
+  .hero{padding:64px 24px 48px}
+  section{padding:48px 16px}
+  .nav-links{gap:16px}
+}
+</style>
 </head>
 <body>
-    <nav class="topbar">
-        <div class="topbar-inner">
-            <span class="topbar-name">earljohn-spec</span>
-            <div class="topbar-right">
-                <div class="topbar-links">
-                    <a href="#projects">Projects</a>
-                    <a href="#stack">Stack</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
-            </div>
+<a class="skip" href="#main">Skip to content</a>
+<nav><div class="nav-inner">
+  <span class="logo">earl john plaza</span>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></nav>
+<main id="main">
+<section class="hero">
+  <h1>Full-stack developer<br>who ships secure software</h1>
+  <p class="subtitle">Laravel &middot; Python &middot; MySQL</p>
+  <p class="tagline">3rd-year BSIT student building tested, production-grade web applications. Security-first approach, 56-test suites, role-based access out of the box.</p>
+  <div class="hero-links">
+    <a href="https://github.com/earljohn-spec" class="btn btn-primary">GitHub</a>
+    <a href="https://www.linkedin.com/in/earl-john-plaza-59a6993b9/" class="btn btn-secondary">LinkedIn</a>
+  </div>
+</section><section id="projects">
+<div class="section-inner">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#1e40af,#3b82f6)">stockflow</div>
+      <div class="card-body">
+        <h3>stockflow</h3>
+        <p>Inventory management and point-of-sale system with role-based access control, real-time stock tracking, sales analytics, and CSV export.</p>
+        <div class="tags">
+          <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span><span class="tag">Chart.js</span>
         </div>
-    </nav>
-    <div class="container">
-        <header class="hero">
-            <img class="avatar" src="./photo.png" alt="Earl John B. Plaza" width="96" height="96">
-            <div class="hero-text">
-                <h1>Earl John B. Plaza</h1>
-                <p>3rd year BSIT at Davao Del Norte State University.
-                   Backend systems, distributed data structures, retrieval pipelines.</p>
-            </div>
-        </header>
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>rfc-rag-pipeline</h3>
-                <div class="subtitle">Hybrid Retrieval Engine for IETF RFCs</div>
-                <p>Retrieval-augmented generation pipeline for technical documents.
-                   Dense embeddings and BM25 sparse retrieval fused via Reciprocal
-                   Rank Fusion (k=60). Structural chunking follows RFC section
-                   boundaries instead of splitting on token count.</p>
-                <ul>
-                    <li>64 tests, mypy strict, ruff linting</li>
-                    <li>Python library, no HTTP server or daemon</li>
-                    <li>Retrieval bias documented via ADR</li>
-                </ul>
-                <div class="private">Private — available on request.</div>
-            </div>
-            <div class="project">
-                <h3>convergence-crdt</h3>
-                <div class="subtitle">Op-Based CRDT for Collaborative Text</div>
-                <p>RGA (Replicated Growable Array) with causal ordering,
-                   out-of-order delivery, and fuzz-tested convergence across
-                   N sites. Lamport clocks for total ordering with deterministic
-                   tiebreak on site ID.</p>
-                <ul>
-                    <li>77 tests including multi-site fuzz convergence</li>
-                    <li>Optional WebSocket transport; zero core dependencies</li>
-                    <li>SQLite checkpoint persistence; opt-in tombstone GC</li>
-                </ul>
-                <div class="private">Private — available on request.</div>
-            </div>
-                    <div class="project">
-                <h3>stockflow</h3>
-                <div class="subtitle">Inventory Management and POS System</div>
-                <p>Laravel 13 inventory and point-of-sale system for small retail.
-                   Computed stock from transaction audit log, atomic checkout,
-                   role-based access (admin/cashier), and sales reporting with CSV export.</p>
-                <ul>
-                    <li>32 Pest feature tests covering auth, CRUD, POS, inventory, reports, security</li>
-                    <li>POS checkout with Alpine.js cart and DB::transaction rollback</li>
-                    <li>Security audit passed: rate limiting, server-side pricing, RBAC</li>
-                </ul>
-                <div class="private">Private — available on request.</div>
-            </div>
-            <div class="project">
-                <h3>salary-predictor</h3>
-                <div class="subtitle">ML Salary Prediction with SHAP Explainability</div>
-                <p>End-to-end ML pipeline: XGBoost regressor (R2=0.976) trained on 6,700 rows,
-                   SHAP explanations per prediction, and a FastAPI serving endpoint with
-                   Pydantic v2 validation. Model serialized as native .ubj (no pickle).</p>
-                <ul>
-                    <li>15 pytest tests: data pipeline, inference, API integration</li>
-                    <li>FastAPI lifespan hook for single-load model serving</li>
-                    <li>SHAP summary, dependence, and waterfall plots</li>
-                </ul>
-                <div class="private">Private — available on request.</div>
-            </div></section>
-        <section id="stack">
-            <h2>Stack</h2>
-            <div class="stack-grid">
-                <dl class="stack-item"><dt>Backend</dt><dd>Python, Java, PHP, Laravel</dd></dl>
-                <dl class="stack-item"><dt>Data</dt><dd>MySQL, SQLite, ChromaDB</dd></dl>
-                <dl class="stack-item"><dt>Retrieval</dt><dd>sentence-transformers, BM25, RRF</dd></dl>
-                <dl class="stack-item"><dt>Distributed</dt><dd>CRDTs, version vectors, Lamport clocks</dd></dl>
-                <dl class="stack-item"><dt>Frontend</dt><dd>HTML, CSS, Tailwind, Alpine.js</dd></dl>
-                <dl class="stack-item"><dt>ML/AI</dt><dd>XGBoost, SHAP, scikit-learn, FastAPI</dd></dl>
-                <dl class="stack-item"><dt>Tooling</dt><dd>Git, pytest, mypy, ruff, Vite</dd></dl>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <ul class="contact-list">
-                <li><span>location</span> Davao, Philippines</li>
-                <li><span>email</span> <a href="mailto:earljohnbplaza@gmail.com">earljohnbplaza@gmail.com</a></li>
-                <li><span>github</span> <a href="https://github.com/earljohn-spec">earljohn-spec</a></li>
-                <li><span>linkedin</span> <a href="https://www.linkedin.com/in/earl-john-plaza-59a6993b9/">earl-john-plaza</a></li>
-            </ul>
-        </section>
-        <div class="cta">
-            Open to backend internships and junior developer roles.
-            <a href="mailto:earljohnbplaza@gmail.com">Get in touch.</a>
-        </div>
+        <div class="metrics">56 tests &middot; RBAC &middot; CSP headers &middot; Shopify-inspired UI</div>
+      </div>
     </div>
-    <script>
-        (function() {
-            var btn = document.getElementById('theme-toggle');
-            var root = document.documentElement;
-            var saved = localStorage.getItem('theme');
-            if (saved) root.setAttribute('data-theme', saved);
-            function updateIcon() {
-                btn.textContent = root.getAttribute('data-theme') === 'dark' ? '\u2600' : '\u263E';
-            }
-            updateIcon();
-            btn.addEventListener('click', function() {
-                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                root.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-                updateIcon();
-            });
-        })();
-    </script>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#6b21a8,#a855f7)">rfc-rag</div>
+      <div class="card-body">
+        <h3>rfc-rag-pipeline</h3>
+        <p>Retrieval-augmented generation pipeline for IETF RFC documents. Hybrid BM25 + dense vector search with reciprocal rank fusion and LLM-powered Q&A.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">ChromaDB</span><span class="tag">Sentence Transformers</span>
+        </div>
+        <div class="metrics">64 tests &middot; RRF k=60 &middot; OWASP LLM Top 10 mitigations</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#0f766e,#14b8a6)">crdt</div>
+      <div class="card-body">
+        <h3>convergence-crdt</h3>
+        <p>Conflict-free replicated data type engine implementing RGA for collaborative text editing. Guarantees eventual consistency across distributed nodes.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">CRDT</span>
+        </div>
+        <div class="metrics">77 tests &middot; RGA + LWW registers &middot; causal ordering</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#c2410c,#f97316)">salary</div>
+      <div class="card-body">
+        <h3>salary-predictor</h3>
+        <p>Machine learning API that predicts salary ranges from job attributes. Trained on 6,700+ records with feature engineering and cross-validation.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">FastAPI</span><span class="tag">Pandas</span>
+        </div>
+        <div class="metrics">15 tests &middot; Random Forest &middot; CC0 dataset &middot; REST API</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section><section id="skills">
+<div class="section-inner">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skill-grid">
+    <div class="skill-group">
+      <h3>Backend</h3>
+      <div class="tags">
+        <span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frontend</h3>
+      <div class="tags">
+        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Alpine.js</span><span class="tag">Blade</span><span class="tag">Chart.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Data &amp; ML</h3>
+      <div class="tags">
+        <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">ChromaDB</span><span class="tag">Sentence Transformers</span><span class="tag">RAG</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools &amp; Security</h3>
+      <div class="tags">
+        <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">OWASP</span><span class="tag">CSP</span><span class="tag">RBAC</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-box">
+    <p>3rd-year BSIT student at Davao Del Norte State University. I build web applications with a security-first mindset — input validation, rate limiting, and content security policies are defaults, not afterthoughts. Available for freelance work, 20–30 hours per week, UTC+8 timezone.</p>
+  </div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="section-inner">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="email"><a href="mailto:earljohnbplaza@gmail.com">earljohnbplaza@gmail.com</a></p>
+  <p>Available for freelance &middot; UTC+8 &middot; 20–30 hrs/week</p>
+  <div class="hero-links" style="margin-top:24px">
+    <a href="https://github.com/earljohn-spec" class="btn btn-secondary">GitHub</a>
+    <a href="https://www.linkedin.com/in/earl-john-plaza-59a6993b9/" class="btn btn-secondary">LinkedIn</a>
+  </div>
+</div>
+</section>
+</main>
+<footer>&copy; 2025 Earl John Plaza</footer>
+</body>
+</html><section id="skills">
+<div class="section-inner">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skill-grid">
+    <div class="skill-group">
+      <h3>Backend</h3>
+      <div class="tags">
+        <span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frontend</h3>
+      <div class="tags">
+        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Alpine.js</span><span class="tag">Blade</span><span class="tag">Chart.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Data &amp; ML</h3>
+      <div class="tags">
+        <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">ChromaDB</span><span class="tag">Sentence Transformers</span><span class="tag">RAG</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools &amp; Security</h3>
+      <div class="tags">
+        <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">OWASP</span><span class="tag">CSP</span><span class="tag">RBAC</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-box">
+    <p>3rd-year BSIT student at Davao Del Norte State University. I build web applications with a security-first mindset — input validation, rate limiting, and content security policies are defaults, not afterthoughts. Available for freelance work, 20–30 hours per week, UTC+8 timezone.</p>
+  </div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="section-inner">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="email"><a href="mailto:earljohnbplaza@gmail.com">earljohnbplaza@gmail.com</a></p>
+  <p>Available for freelance &middot; UTC+8 &middot; 20–30 hrs/week</p>
+  <div class="hero-links" style="margin-top:24px">
+    <a href="https://github.com/earljohn-spec" class="btn btn-secondary">GitHub</a>
+    <a href="https://www.linkedin.com/in/earl-john-plaza-59a6993b9/" class="btn btn-secondary">LinkedIn</a>
+  </div>
+</div>
+</section>
+</main>
+<footer>&copy; 2025 Earl John Plaza</footer>
 </body>
 </html>
