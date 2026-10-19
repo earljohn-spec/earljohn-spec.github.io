@@ -14,49 +14,50 @@
         .polaris-accent { color: #008060; }
         .polaris-bg-accent { background-color: #008060; }
         
-        /* Interactive screenshot zoom frame */
-        .browser-preview-container {
-            overflow: hidden;
+        .browser-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        /* Unified Frame Container for Both Projects */
+        .frame-window {
             border-radius: 8px;
             border: 1px solid #e1e3e5;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
             background: #ffffff;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
         }
-        .browser-preview-container:hover {
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.25);
+        .frame-window:hover {
             transform: translateY(-4px);
+            box-shadow: 0 15px 35px -5px rgba(0,0,0,0.18);
         }
         .browser-preview-img {
             transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             transform-origin: top left;
         }
-        .browser-preview-container:hover .browser-preview-img {
-            transform: scale(1.18);
+        .frame-window:hover .browser-preview-img {
+            transform: scale(1.15);
         }
 
-        .terminal-window {
+        .terminal-bg {
             background: #0f172a;
-            border-radius: 8px;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            border-color: #1e293b;
         }
-        .browser-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
     </style>
 </head>
 <body class="p-4 md:p-12">
-    <div class="max-w-6xl mx-auto space-y-12">
+    <div class="max-w-6xl mx-auto space-y-10">
 
         <!-- Top Header & Executive Summary -->
         <header class="polaris-card p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#ebf5f0] text-[#008060] mb-3">
                     <span class="w-2 h-2 rounded-full bg-[#008060]"></span>
-                    Available for IT Project Management & Software Architecture Consultation
+                    Available for IT Project Management & Systems Architecture
                 </div>
                 <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Earl John Plaza</h1>
                 <p class="text-base md:text-lg text-gray-600 font-medium mt-1">
@@ -86,7 +87,7 @@
             </div>
             <div class="polaris-card p-4 text-center">
                 <div class="text-2xl font-bold polaris-accent">0 CVEs</div>
-                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">AppSec Audit Passed</div>
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">AppSec Audit Cleared</div>
             </div>
             <div class="polaris-card p-4 text-center">
                 <div class="text-2xl font-bold text-gray-900">100%</div>
@@ -94,55 +95,55 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section (Uniform Grid) -->
         <section class="space-y-8">
             <div class="flex items-center justify-between border-b border-gray-200 pb-3">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-500">Featured Software Architecture</h2>
-                <span class="text-xs text-gray-400">Hover images to zoom details</span>
+                <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500">Selected Production Systems</h2>
+                <span class="text-xs text-gray-400">Hover frames for detail view</span>
             </div>
 
-            <!-- Project 1: Stockflow ERP -->
+            <!-- Project Card 1: Stockflow ERP -->
             <div class="polaris-card p-6 md:p-8">
                 <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <!-- Left Meta Column (5 Cols) -->
                     <div class="lg:col-span-5 space-y-4">
-                        <div class="inline-block px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#008060] border border-emerald-200">
-                            Enterprise Retail System
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Stockflow POS & ERP</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            A production-grade retail management ecosystem built with Laravel 12 and Shopify Polaris aesthetic tokens. Features role-based access control, an Alpine.js POS terminal, atomic inventory ledger adjustments, native Blade SVG analytics, and strict AppSec headers.
+                        <span class="inline-block px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-[#008060] border border-emerald-200">
+                            Enterprise ERP & POS
+                        </span>
+                        <h3 class="text-2xl font-bold text-gray-900">Stockflow System</h3>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+                            A production-grade Inventory & POS system built for high-velocity retail. Features a Shopify Polaris-inspired operational interface, real-time stock ledger, and role-based access control for Admins and Cashiers.
                         </p>
                         
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Laravel 12</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">PHP 8.5</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Alpine.js</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Tailwind CSS</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Blade SVG</span>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Laravel 12</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">PHP 8.5</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Alpine.js</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Blade SVG</span>
                         </div>
 
-                        <div class="pt-4 flex items-center gap-4">
+                        <div class="pt-2">
                             <a href="https://github.com/earljohn-spec/stockflow" target="_blank" class="inline-flex items-center text-sm font-semibold polaris-accent hover:underline">
-                                Explore Stockflow Repo →
+                                View Repository →
                             </a>
                         </div>
                     </div>
 
-                    <!-- Enhanced Screenshot Frame -->
+                    <!-- Right Visual Frame (7 Cols) -->
                     <div class="lg:col-span-7">
-                        <div class="browser-preview-container">
-                            <div class="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between">
+                        <div class="frame-window">
+                            <div class="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between rounded-t-lg">
                                 <div class="flex items-center">
                                     <span class="browser-dot dot-red"></span>
                                     <span class="browser-dot dot-yellow"></span>
                                     <span class="browser-dot dot-green"></span>
                                 </div>
-                                <div class="bg-white px-8 py-0.5 rounded text-[11px] text-gray-500 font-mono border border-gray-200">
+                                <div class="bg-white px-6 py-0.5 rounded text-[10px] text-gray-500 font-mono border border-gray-200">
                                     https://stockflow.local/dashboard
                                 </div>
-                                <div class="w-12"></div>
+                                <div class="w-10"></div>
                             </div>
-                            <div class="relative bg-white aspect-[16/10] overflow-hidden">
+                            <div class="relative bg-white flex-1 overflow-hidden rounded-b-lg aspect-[16/9]">
                                 <img src="stockflow.png" alt="Stockflow Operational Dashboard" class="browser-preview-img w-full h-full object-cover object-top">
                             </div>
                         </div>
@@ -150,56 +151,55 @@
                 </div>
             </div>
 
-            <!-- Project 2: Salary Predictor Machine Learning Pipeline -->
+            <!-- Project Card 2: Salary Predictor -->
             <div class="polaris-card p-6 md:p-8">
                 <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <!-- Left Meta Column (5 Cols) -->
                     <div class="lg:col-span-5 space-y-4">
-                        <div class="inline-block px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
-                            Machine Learning & Analytics
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Salary Predictor Engine</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            An end-to-end salary forecasting pipeline trained on 6,700+ records. Outperforms linear baseline with $5,465 MAE and 0.9764 R². Serialized with native XGBoost binary format (`.ubj`), backed by SHAP explainability summaries, and exposed via FastAPI endpoints.
+                        <span class="inline-block px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
+                            Machine Learning & API
+                        </span>
+                        <h3 class="text-2xl font-bold text-gray-900">Salary Predictor</h3>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+                            An end-to-end salary forecasting pipeline trained on 6,700+ records. Outperforms baseline with $5,465 MAE and 0.9764 R². Serialized with native XGBoost binary format (`.ubj`), backed by SHAP explainability, and served via FastAPI endpoints.
                         </p>
                         
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Python 3.11</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">XGBoost</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">FastAPI</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">SHAP</span>
-                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Pydantic v2</span>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Python 3.11</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">XGBoost</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">FastAPI</span>
+                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">SHAP</span>
                         </div>
 
-                        <div class="pt-4 flex items-center gap-4">
+                        <div class="pt-2">
                             <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" class="inline-flex items-center text-sm font-semibold polaris-accent hover:underline">
-                                Explore Salary Predictor Repo →
+                                View Repository →
                             </a>
                         </div>
                     </div>
 
-                    <!-- Interactive Terminal Window Container -->
+                    <!-- Right Visual Frame (7 Cols - Terminal Window) -->
                     <div class="lg:col-span-7">
-                        <div class="terminal-window p-4 text-xs leading-relaxed text-gray-300">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+                        <div class="frame-window terminal-bg">
+                            <div class="px-4 py-2 border-b border-slate-800 flex items-center justify-between rounded-t-lg">
                                 <div class="flex items-center">
                                     <span class="browser-dot dot-red"></span>
                                     <span class="browser-dot dot-yellow"></span>
                                     <span class="browser-dot dot-green"></span>
                                 </div>
-                                <span class="text-slate-500 font-mono text-[11px]">salary-predictor — bash — 80x24</span>
-                                <div class="w-12"></div>
+                                <div class="text-[10px] text-slate-400 font-mono">
+                                    salary-predictor — bash — 80x24
+                                </div>
+                                <div class="w-10"></div>
                             </div>
-                            <div class="space-y-1.5 font-mono">
+                            <div class="p-4 text-xs font-mono space-y-2 text-slate-300 flex-1 rounded-b-lg overflow-hidden leading-relaxed">
                                 <p class="text-emerald-400">$ pytest tests/ -v</p>
                                 <p class="text-slate-400">test_pipeline.py::test_model_accuracy <span class="text-emerald-400">PASSED [MAE: $5,465]</span></p>
                                 <p class="text-slate-400">test_api.py::test_predict_endpoint_valid <span class="text-emerald-400">PASSED [200 OK]</span></p>
-                                <p class="text-slate-400">test_security.py::test_input_bounds_validation <span class="text-emerald-400">PASSED [422 Unprocessable Entity]</span></p>
-                                <p class="text-slate-500 mt-2">----------------------------------------------------</p>
+                                <p class="text-slate-500">----------------------------------------------------</p>
                                 <p class="text-emerald-400">$ uvicorn main:app --host 127.0.0.1 --port 8000</p>
-                                <p class="text-slate-300">INFO: Started server process [PID 14208]</p>
-                                <p class="text-slate-300">INFO: Waiting for application startup.</p>
-                                <p class="text-slate-300">INFO: Application startup complete. Model native .ubj loaded.</p>
-                                <p class="text-slate-400 mt-2"><span class="text-blue-400">POST /predict</span> HTTP/1.1 200 OK - 14ms</p>
+                                <p class="text-slate-300">INFO: Application startup complete. Loaded model.ubj</p>
+                                <p class="text-slate-400"><span class="text-blue-400">POST /predict</span> HTTP/1.1 200 OK - 14ms</p>
                                 <p class="text-slate-500">{ "predicted_salary": 94500.00, "shap_status": "explained" }</p>
                             </div>
                         </div>
@@ -208,56 +208,52 @@
             </div>
         </section>
 
-        <!-- Technical Competencies Grid -->
-        <section class="polaris-card p-6 md:p-8 space-y-6">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-500">Core Technical Capabilities</h2>
+        <!-- Technical Competencies Matrix -->
+        <section class="polaris-card p-6 md:p-8 space-y-4">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500">Core Technical Capabilities</h2>
             
-            <div class="grid md:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-4 gap-6 pt-2">
                 <div class="space-y-2">
-                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">IT Project Management</h3>
-                    <ul class="text-xs text-gray-600 space-y-1.5">
-                        <li>· Agile & Scrum Governance</li>
+                    <h3 class="text-xs font-bold text-gray-900 border-b border-gray-200 pb-1.5 uppercase tracking-wider">Project Governance</h3>
+                    <ul class="text-xs text-gray-600 space-y-1">
+                        <li>· Agile / Scrum Delivery</li>
                         <li>· Feature Scope Baseline</li>
                         <li>· Risk Mitigation & AppSec</li>
-                        <li>· Architecture Review</li>
                     </ul>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Backend & Systems</h3>
-                    <ul class="text-xs text-gray-600 space-y-1.5">
+                    <h3 class="text-xs font-bold text-gray-900 border-b border-gray-200 pb-1.5 uppercase tracking-wider">Backend Architecture</h3>
+                    <ul class="text-xs text-gray-600 space-y-1">
                         <li>· Laravel 12 & PHP 8.5</li>
                         <li>· Python 3.11 & FastAPI</li>
-                        <li>· RESTful API Architecture</li>
-                        <li>· SQLite & PostgreSQL</li>
+                        <li>· REST APIs & Eloquent ORM</li>
                     </ul>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Frontend & UX Design</h3>
-                    <ul class="text-xs text-gray-600 space-y-1.5">
-                        <li>· Shopify Polaris Design Tokens</li>
-                        <li>· Tailwind CSS Infrastructure</li>
-                        <li>· Alpine.js Reactive State</li>
-                        <li>· Native Blade Server SVG</li>
+                    <h3 class="text-xs font-bold text-gray-900 border-b border-gray-200 pb-1.5 uppercase tracking-wider">Frontend System</h3>
+                    <ul class="text-xs text-gray-600 space-y-1">
+                        <li>· Shopify Polaris Tokens</li>
+                        <li>· Tailwind CSS Framework</li>
+                        <li>· Alpine.js Reactive POS</li>
                     </ul>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Quality & Security</h3>
-                    <ul class="text-xs text-gray-600 space-y-1.5">
+                    <h3 class="text-xs font-bold text-gray-900 border-b border-gray-200 pb-1.5 uppercase tracking-wider">Quality Assurance</h3>
+                    <ul class="text-xs text-gray-600 space-y-1">
                         <li>· Automated Pytest Suite</li>
-                        <li>· Content Security Policy (CSP)</li>
-                        <li>· Zero-Trust Role Access (RBAC)</li>
-                        <li>· Serialization Safety</li>
+                        <li>· CSP & Security Headers</li>
+                        <li>· RBAC Zero-Trust Rules</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="text-center py-6 text-xs text-gray-500 border-t border-gray-200 space-y-2">
-            <p>© 2025 Earl John Plaza · IT Project Manager & Full-Stack Systems Engineer</p>
+        <footer class="text-center py-6 text-xs text-gray-500 border-t border-gray-200 space-y-1">
+            <p>© 2025 Earl John Plaza · IT Project Manager & Systems Engineer</p>
             <p class="text-gray-400">DNSC BSIT · Davao Del Norte State University</p>
         </footer>
 
