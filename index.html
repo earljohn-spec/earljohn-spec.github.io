@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earl John Plaza | IT Project Manager & Systems Engineer</title>
-    <!-- Tailwind Configuration for Dark Mode -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,7 +14,6 @@
                 }
             }
         }
-        // FOUC Prevention: Check local storage before page render
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -50,37 +48,41 @@
         .dark .terminal-bg { border-color: #0f172a; background: #020617; }
     </style>
 </head>
-<body class="p-4 md:p-12 relative min-h-screen">
+<body class="p-4 md:p-12 min-h-screen">
 
-    <!-- Absolute Theme Toggle Button -->
-    <div class="absolute top-4 right-4 md:top-8 md:right-12 z-50">
-        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#008060] dark:focus:ring-emerald-500 rounded-full text-sm p-2.5 transition-all duration-300 shadow-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+    <!-- Fixed Floating Theme Toggle Button (Top Right) -->
+    <div class="fixed top-4 right-4 md:top-6 md:right-8 z-50">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#008060] dark:focus:ring-emerald-500 transition-all duration-300">
+            <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            <span id="theme-toggle-text">Mode</span>
         </button>
     </div>
 
-    <div class="max-w-6xl mx-auto space-y-8 mt-12 md:mt-0">
+    <div class="max-w-6xl mx-auto space-y-8 mt-8">
 
         <!-- Header -->
         <header class="polaris-card p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
                 
                 <!-- Dynamic Profile Picture (GitHub Avatar) -->
-                <div class="relative shrink-0 group">
-                    <img src="https://github.com/earljohn-spec.png" alt="Earl John Plaza" class="w-24 h-24 rounded-full border-4 border-white dark:border-gray-900 shadow-md object-cover ring-2 ring-gray-200 dark:ring-gray-700 transition-transform duration-300 group-hover:scale-105">
-                    <div class="absolute bottom-1 right-1 w-5 h-5 bg-[#008060] dark:bg-emerald-500 border-2 border-white dark:border-gray-900 rounded-full" title="Available for Collaboration"></div>
+                <div class="relative shrink-0">
+                    <img src="https://github.com/earljohn-spec.png" 
+                         onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/161474939';"
+                         alt="Earl John Plaza" 
+                         class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-[#008060] dark:border-emerald-500 shadow-md object-cover ring-4 ring-gray-100 dark:ring-gray-800">
+                    <span class="absolute bottom-1 right-1 w-4 h-4 bg-[#008060] dark:bg-emerald-500 border-2 border-white dark:border-gray-900 rounded-full" title="Active & Available"></span>
                 </div>
 
-                <!-- Titles -->
+                <!-- Titles & Corrected College Name -->
                 <div>
                     <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">Earl John Plaza</h1>
                     <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-medium mt-1">IT Project Manager & Systems Engineer</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Davao Del Norte State University (DNSC) · BSIT</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Davao Del Norte State College of Panabo (DNSC) · BSIT</p>
                 </div>
             </div>
             
-            <div class="flex gap-3">
+            <div class="flex gap-3 w-full sm:w-auto justify-start sm:justify-end">
                 <a href="https://github.com/earljohn-spec" target="_blank" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition shadow-sm">GitHub</a>
                 <a href="mailto:earljohnbplaza@gmail.com" class="px-4 py-2 text-sm font-semibold rounded-lg polaris-bg-accent text-white hover:opacity-90 transition shadow-sm">Contact</a>
             </div>
@@ -124,7 +126,7 @@
                         <p class="text-slate-400">>> Context retrieved from ChromaDB (3 chunks)</p>
                         <p class="text-blue-300">>> Response generated via local LLM</p>
                     </div>
-                    <a href="https://github.com/earljohn-spec/rfc-rag-pipeline" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/rfc-rag-pipeline" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
                 </div>
             </div>
 
@@ -142,7 +144,7 @@
                         <p class="text-emerald-400 dark:text-emerald-500">>> LWW-Element-Set: MERGED [OK]</p>
                         <p class="text-slate-400">>> Converged State: Consistent</p>
                     </div>
-                    <a href="https://github.com/earljohn-spec/convergence-crdt" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/convergence-crdt" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
                 </div>
             </div>
 
@@ -156,9 +158,9 @@
                 <div class="mt-4">
                     <div class="frame-window h-32 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                         <div class="bg-gray-200 dark:bg-gray-700 px-2 py-1 flex gap-1 border-b border-gray-300 dark:border-gray-600"><span class="browser-dot dot-red"></span><span class="browser-dot dot-yellow"></span><span class="browser-dot dot-green"></span></div>
-                        <img src="stockflow.png" class="w-full h-full object-cover object-top opacity-80" />
+                        <img src="stockflow.png" alt="Stockflow Dashboard" class="w-full h-full object-cover object-top opacity-80" />
                     </div>
-                    <a href="https://github.com/earljohn-spec/stockflow" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/stockflow" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
                 </div>
             </div>
 
@@ -176,7 +178,7 @@
                         <p class="text-emerald-400 dark:text-emerald-500">>> Inference Latency: 12ms [OK]</p>
                         <p class="text-slate-400">>> SHAP waterfall generated</p>
                     </div>
-                    <a href="https://github.com/earljohn-spec/salary-predictor" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
                 </div>
             </div>
 
@@ -193,9 +195,9 @@
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer with Correct College Name -->
         <footer class="text-center py-4 text-[10px] text-gray-400 dark:text-gray-500">
-            © 2026 Earl John Plaza · IT Project Manager & Systems Engineer · DNSC BSIT
+            © 2026 Earl John Plaza · IT Project Manager & Systems Engineer · Davao Del Norte State College of Panabo
         </footer>
 
     </div>
@@ -204,37 +206,33 @@
     <script>
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleText = document.getElementById('theme-toggle-text');
         const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Render Correct Icon on Load
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            themeToggleLightIcon.classList.remove('hidden');
-        } else {
-            themeToggleDarkIcon.classList.remove('hidden');
+        function updateToggleUI() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+                themeToggleText.textContent = 'Light';
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleText.textContent = 'Dark';
+            }
         }
 
-        // Toggle Event Listener
-        themeToggleBtn.addEventListener('click', function() {
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
+        updateToggleUI();
 
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
             } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
             }
+            updateToggleUI();
         });
     </script>
 </body>
