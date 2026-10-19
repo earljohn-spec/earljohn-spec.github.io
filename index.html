@@ -21,7 +21,7 @@ body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--text);ba
 a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
 .skip{position:absolute;top:-100%;left:16px;z-index:100;background:var(--accent);color:#fff;padding:8px 16px;border-radius:0 0 6px 6px;font-size:14px}
-.skip:focus{top:0}
+.skip:focus{top:0}.avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:24px;border:3px solid var(--border)}
 
 /* NAV — shopify.com nav pattern */
 nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border)}
@@ -99,6 +99,7 @@ footer{border-top:1px solid var(--border);padding:24px;text-align:center;font-si
 </div></nav>
 <main id="main">
 <section class="hero">
+  <img class="avatar" src="https://github.com/earljohn-spec.png" alt="Earl John Plaza">
   <h1>Full-stack developer<br>who ships secure software</h1>
   <p class="subtitle">Laravel &middot; Python &middot; MySQL</p>
   <p class="tagline">3rd-year BSIT student building tested, production-grade web applications. Security-first approach, 56-test suites, role-based access out of the box.</p>
