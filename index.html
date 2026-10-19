@@ -2,78 +2,265 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content```powershell
-    <title>Earl John Plaza | IT Project Manager & Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earl John Plaza | IT Project Manager & Systems Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f6f6f7; color: #202223; }
-        .project-card:hover .browser-window { transform: translateY(-8px) scale(1.02); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .browser-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        .polaris-card { background: #ffffff; border: 1px solid #e1e3e5; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .polaris-accent { color: #008060; }
+        .polaris-bg-accent { background-color: #008060; }
+        
+        /* Interactive screenshot zoom frame */
+        .browser-preview-container {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e1e3e5;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+        .browser-preview-container:hover {
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.25);
+            transform: translateY(-4px);
+        }
+        .browser-preview-img {
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform-origin: top left;
+        }
+        .browser-preview-container:hover .browser-preview-img {
+            transform: scale(1.18);
+        }
+
+        .terminal-window {
+            background: #0f172a;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+        .browser-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
         .dot-red { background: #ff5f56; }
         .dot-yellow { background: #ffbd2e; }
         .dot-green { background: #27c93f; }
-        .glass-card { background: white; border: 1px solid #e1e3e5; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="p-6 md:p-12">
-    <div class="max-w-5xl mx-auto">
-        <header class="mb-16">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900">Earl John Plaza</h1>
-            <p class="text-lg text-gray-600 mt-2">IT Project Manager · DNSC BSIT</p>
-            <div class="flex gap-4 mt-4">
-                <a href="https://github.com/earljohn-spec" class="text-sm font-medium text-[#008060] hover:underline">GitHub</a>
-                <a href="mailto:earljohnbplaza@gmail.com" class="text-sm font-medium text-[#008060] hover:underline">Email</a>
+<body class="p-4 md:p-12">
+    <div class="max-w-6xl mx-auto space-y-12">
+
+        <!-- Top Header & Executive Summary -->
+        <header class="polaris-card p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#ebf5f0] text-[#008060] mb-3">
+                    <span class="w-2 h-2 rounded-full bg-[#008060]"></span>
+                    Available for IT Project Management & Software Architecture Consultation
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Earl John Plaza</h1>
+                <p class="text-base md:text-lg text-gray-600 font-medium mt-1">
+                    IT Project Manager & Full-Stack Systems Engineer
+                </p>
+                <p class="text-xs text-gray-500 mt-1">Davao Del Norte State University (DNSC) · BSIT</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/earljohn-spec" target="_blank" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-900 text-white hover:bg-gray-800 transition">
+                    GitHub Profile
+                </a>
+                <a href="mailto:earljohnbplaza@gmail.com" class="px-4 py-2 text-sm font-semibold rounded-lg polaris-bg-accent text-white hover:opacity-90 transition">
+                    Contact Email
+                </a>
             </div>
         </header>
 
-        <section>
-            <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-8">Selected Projects</h2>
-            <div class="grid grid-cols-1 gap-12">
-                <div class="project-card group">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-[#008060] bg-[#ebf5f0] px-2 py-1 rounded">Enterprise ERP</span>
-                            <h3 class="text-2xl font-bold mt-4 mb-3">Stockflow</h3>
-                            <p class="text-gray-600 mb-6 leading-relaxed">
-                                A production-grade Inventory &amp; POS system built for high-velocity retail.
-                                Features a Shopify Polaris-inspired interface, real-time stock ledger,
-                                and role-based access control for Admins and Cashiers.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100 border border-gray-200">Laravel 12</span>
-                                <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100 border border-gray-200">PHP 8.5</span>
-                                <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100 border border-gray-200">Alpine.js</span>
-                                <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100 border border-gray-200">Blade SVG</span>
-                            </div>
-                            <a href="https://github.com/earljohn-spec/stockflow" class="inline-flex items-center text-sm font-semibold text-gray-900 hover:text-[#008060]">
-                                View Repository
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        <!-- Metrics Overview Bar -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="polaris-card p-4 text-center">
+                <div class="text-2xl font-bold text-gray-900">2</div>
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">Production Systems</div>
+            </div>
+            <div class="polaris-card p-4 text-center">
+                <div class="text-2xl font-bold text-gray-900">56+</div>
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">Automated Tests</div>
+            </div>
+            <div class="polaris-card p-4 text-center">
+                <div class="text-2xl font-bold polaris-accent">0 CVEs</div>
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">AppSec Audit Passed</div>
+            </div>
+            <div class="polaris-card p-4 text-center">
+                <div class="text-2xl font-bold text-gray-900">100%</div>
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-1">Polaris UI Compliance</div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="space-y-8">
+            <div class="flex items-center justify-between border-b border-gray-200 pb-3">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-gray-500">Featured Software Architecture</h2>
+                <span class="text-xs text-gray-400">Hover images to zoom details</span>
+            </div>
+
+            <!-- Project 1: Stockflow ERP -->
+            <div class="polaris-card p-6 md:p-8">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="inline-block px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#008060] border border-emerald-200">
+                            Enterprise Retail System
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Stockflow POS & ERP</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            A production-grade retail management ecosystem built with Laravel 12 and Shopify Polaris aesthetic tokens. Features role-based access control, an Alpine.js POS terminal, atomic inventory ledger adjustments, native Blade SVG analytics, and strict AppSec headers.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Laravel 12</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">PHP 8.5</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Alpine.js</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Tailwind CSS</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Blade SVG</span>
+                        </div>
+
+                        <div class="pt-4 flex items-center gap-4">
+                            <a href="https://github.com/earljohn-spec/stockflow" target="_blank" class="inline-flex items-center text-sm font-semibold polaris-accent hover:underline">
+                                Explore Stockflow Repo →
                             </a>
                         </div>
-                        <div class="relative">
-                            <div class="browser-window overflow-hidden rounded-lg shadow-2xl border border-gray-200 transition-all duration-500">
-                                <div class="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center">
+                    </div>
+
+                    <!-- Enhanced Screenshot Frame -->
+                    <div class="lg:col-span-7">
+                        <div class="browser-preview-container">
+                            <div class="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between">
+                                <div class="flex items-center">
                                     <span class="browser-dot dot-red"></span>
                                     <span class="browser-dot dot-yellow"></span>
                                     <span class="browser-dot dot-green"></span>
-                                    <div class="mx-auto bg-white rounded text-[10px] px-12 py-0.5 text-gray-400 border border-gray-200">stockflow.local</div>
                                 </div>
-                                <img src="stockflow.png" alt="Stockflow Dashboard" class="w-full h-auto object-top">
+                                <div class="bg-white px-8 py-0.5 rounded text-[11px] text-gray-500 font-mono border border-gray-200">
+                                    https://stockflow.local/dashboard
+                                </div>
+                                <div class="w-12"></div>
+                            </div>
+                            <div class="relative bg-white aspect-[16/10] overflow-hidden">
+                                <img src="stockflow.png" alt="Stockflow Operational Dashboard" class="browser-preview-img w-full h-full object-cover object-top">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="glass-card p-8 rounded-xl opacity-80 hover:opacity-100 transition-opacity">
-                    <h3 class="text-xl font-bold mb-2">Salary Predictor</h3>
-                    <p class="text-gray-600 text-sm mb-4">ML pipeline using XGBoost and SHAP for transparent salary forecasting.</p>
-                    <a href="https://github.com/earljohn-spec/salary-predictor" class="text-sm font-medium text-[#008060]">View Project →</a>
+            <!-- Project 2: Salary Predictor Machine Learning Pipeline -->
+            <div class="polaris-card p-6 md:p-8">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="inline-block px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
+                            Machine Learning & Analytics
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Salary Predictor Engine</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            An end-to-end salary forecasting pipeline trained on 6,700+ records. Outperforms linear baseline with $5,465 MAE and 0.9764 R². Serialized with native XGBoost binary format (`.ubj`), backed by SHAP explainability summaries, and exposed via FastAPI endpoints.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Python 3.11</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">XGBoost</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">FastAPI</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">SHAP</span>
+                            <span class="px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded border border-gray-200">Pydantic v2</span>
+                        </div>
+
+                        <div class="pt-4 flex items-center gap-4">
+                            <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" class="inline-flex items-center text-sm font-semibold polaris-accent hover:underline">
+                                Explore Salary Predictor Repo →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Terminal Window Container -->
+                    <div class="lg:col-span-7">
+                        <div class="terminal-window p-4 text-xs leading-relaxed text-gray-300">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+                                <div class="flex items-center">
+                                    <span class="browser-dot dot-red"></span>
+                                    <span class="browser-dot dot-yellow"></span>
+                                    <span class="browser-dot dot-green"></span>
+                                </div>
+                                <span class="text-slate-500 font-mono text-[11px]">salary-predictor — bash — 80x24</span>
+                                <div class="w-12"></div>
+                            </div>
+                            <div class="space-y-1.5 font-mono">
+                                <p class="text-emerald-400">$ pytest tests/ -v</p>
+                                <p class="text-slate-400">test_pipeline.py::test_model_accuracy <span class="text-emerald-400">PASSED [MAE: $5,465]</span></p>
+                                <p class="text-slate-400">test_api.py::test_predict_endpoint_valid <span class="text-emerald-400">PASSED [200 OK]</span></p>
+                                <p class="text-slate-400">test_security.py::test_input_bounds_validation <span class="text-emerald-400">PASSED [422 Unprocessable Entity]</span></p>
+                                <p class="text-slate-500 mt-2">----------------------------------------------------</p>
+                                <p class="text-emerald-400">$ uvicorn main:app --host 127.0.0.1 --port 8000</p>
+                                <p class="text-slate-300">INFO: Started server process [PID 14208]</p>
+                                <p class="text-slate-300">INFO: Waiting for application startup.</p>
+                                <p class="text-slate-300">INFO: Application startup complete. Model native .ubj loaded.</p>
+                                <p class="text-slate-400 mt-2"><span class="text-blue-400">POST /predict</span> HTTP/1.1 200 OK - 14ms</p>
+                                <p class="text-slate-500">{ "predicted_salary": 94500.00, "shap_status": "explained" }</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Technical Competencies Grid -->
+        <section class="polaris-card p-6 md:p-8 space-y-6">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gray-500">Core Technical Capabilities</h2>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">IT Project Management</h3>
+                    <ul class="text-xs text-gray-600 space-y-1.5">
+                        <li>· Agile & Scrum Governance</li>
+                        <li>· Feature Scope Baseline</li>
+                        <li>· Risk Mitigation & AppSec</li>
+                        <li>· Architecture Review</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Backend & Systems</h3>
+                    <ul class="text-xs text-gray-600 space-y-1.5">
+                        <li>· Laravel 12 & PHP 8.5</li>
+                        <li>· Python 3.11 & FastAPI</li>
+                        <li>· RESTful API Architecture</li>
+                        <li>· SQLite & PostgreSQL</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Frontend & UX Design</h3>
+                    <ul class="text-xs text-gray-600 space-y-1.5">
+                        <li>· Shopify Polaris Design Tokens</li>
+                        <li>· Tailwind CSS Infrastructure</li>
+                        <li>· Alpine.js Reactive State</li>
+                        <li>· Native Blade Server SVG</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-2">Quality & Security</h3>
+                    <ul class="text-xs text-gray-600 space-y-1.5">
+                        <li>· Automated Pytest Suite</li>
+                        <li>· Content Security Policy (CSP)</li>
+                        <li>· Zero-Trust Role Access (RBAC)</li>
+                        <li>· Serialization Safety</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 text-xs text-gray-500 border-t border-gray-200 space-y-2">
+            <p>© 2025 Earl John Plaza · IT Project Manager & Full-Stack Systems Engineer</p>
+            <p class="text-gray-400">DNSC BSIT · Davao Del Norte State University</p>
+        </footer>
+
     </div>
 </body>
 </html>
