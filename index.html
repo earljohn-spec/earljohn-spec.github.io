@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,92 +10,101 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                    colors: {
+                        surface: {
+                            DEFAULT: 'var(--bg-surface)',
+                            secondary: 'var(--bg-secondary)',
+                        },
+                        accent: 'var(--accent)',
+                        default: 'var(--border-default)',
+                    },
+                    textColor: {
+                        primary: 'var(--text-primary)',
+                        secondary: 'var(--text-secondary)',
+                    }
                 }
             }
         }
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #f6f6f7; color: #202223; transition: background-color 0.3s, color 0.3s; }
-        .dark body { background-color: #030712; color: #f9fafb; }
-        
-        .polaris-card { background: #ffffff; border: 1px solid #e1e3e5; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.3s ease; }
-        .dark .polaris-card { background: #111827; border-color: #1f2937; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-        .polaris-card:hover { border-color: #c9cccf; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .dark .polaris-card:hover { border-color: #374151; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        
-        .polaris-accent { color: #008060; }
-        .dark .polaris-accent { color: #10b981; }
-        .polaris-bg-accent { background-color: #008060; }
-        .dark .polaris-bg-accent { background-color: #10b981; }
-        
-        .browser-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .frame-window { border-radius: 8px; border: 1px solid #e1e3e5; background: #ffffff; overflow: hidden; display: flex; flex-direction: column; }
-        .dark .frame-window { border-color: #374151; background: #1f2937; }
-        .terminal-bg { background: #0f172a; border-color: #1e293b; }
-        .dark .terminal-bg { border-color: #0f172a; background: #020617; }
+        :root {
+            --bg-surface: #ffffff;
+            --bg-secondary: #f6f6f7;
+            --border-default: #e1e3e5;
+            --text-primary: #202223;
+            --text-secondary: #6d7175;
+            --accent: #008060;
+        }
+        .dark {
+            --bg-surface: #0f172a;
+            --bg-secondary: #1e293b;
+            --border-default: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+        }
+        body {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+        }
+        .polaris-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-default);
+            border-radius: 8px;
+        }
+        .polaris-accent {
+            border-left: 4px solid var(--accent);
+        }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen">
-
-    <!-- Fixed Floating Theme Toggle Button -->
-    <div class="fixed top-4 right-4 md:top-6 md:right-8 z-50">
-        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-[#008060] dark:focus:ring-emerald-500 transition-all duration-300">
-            <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-            <span id="theme-toggle-text">Mode</span>
+<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
+    <!-- Dark / Light Mode Toggle Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="themeToggle" onclick="toggleTheme()" class="polaris-card px-3 py-1.5 text-xs font-semibold flex items-center gap-2 shadow-sm hover:border-accent transition-colors">
+            <span id="themeIcon">☀️</span> <span id="themeText">Light</span>
         </button>
     </div>
 
-    <div class="max-w-6xl mx-auto space-y-8 mt-8">
-
-        <!-- Header -->
-        <header class="polaris-card p-6 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                
-                <!-- Dynamic Profile Picture (GitHub Avatar) -->
-                <div class="relative shrink-0">
-                    <img src="https://github.com/earljohn-spec.png" 
-                         onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/161474939';"
-                         alt="Earl John Plaza" 
-                         class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-[#008060] dark:border-emerald-500 shadow-md object-cover ring-4 ring-gray-100 dark:ring-gray-800">
-                    <span class="absolute bottom-1 right-1 w-4 h-4 bg-[#008060] dark:bg-emerald-500 border-2 border-white dark:border-gray-900 rounded-full" title="Active & Available"></span>
-                </div>
-
-                <!-- Titles & 100% Real Academic Metadata -->
-                <div>
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">Earl John Plaza</h1>
-                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 font-medium mt-1">IT Project Manager & Systems Engineer</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Davao Del Norte State College of Panabo · BSIT · 3rd Year</p>
-                </div>
+    <div class="max-w-5xl mx-auto space-y-8">
+        <!-- Profile Header -->
+        <header class="polaris-card p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+            <div class="relative">
+                <img src="https://github.com/earljohn-spec.png" alt="Earl John Plaza" class="w-24 h-24 rounded-full border-2 border-emerald-500 p-0.5 object-cover">
+                <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full" title="Available for Collaboration"></span>
             </div>
-            
-            <div class="flex gap-3 w-full sm:w-auto justify-start sm:justify-end">
-                <a href="https://github.com/earljohn-spec" target="_blank" class="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition shadow-sm">GitHub</a>
-                <a href="mailto:earljohnbplaza@gmail.com" class="px-4 py-2 text-sm font-semibold rounded-lg polaris-bg-accent text-white hover:opacity-90 transition shadow-sm">Contact</a>
+            <div class="text-center md:text-left flex-1">
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+                    <h1 class="text-2xl font-bold tracking-tight">Earl John Plaza</h1>
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                        Available for Collaboration
+                    </span>
+                </div>
+                <p class="text-sm font-medium text-secondary mb-3">
+                    IT Project Manager & Systems Engineer · Davao Del Norte State College of Panabo · BSIT 3rd Year
+                </p>
+                <p class="text-xs text-secondary max-w-2xl">
+                    Architecting high-concurrency systems, AI retrieval pipelines, distributed state synchronization, MLOps engines, and automated GitOps IaC deployment pipelines.
+                </p>
+            </div>
+            <div class="flex md:flex-col gap-3">
+                <a href="https://github.com/earljohn-spec" target="_blank" rel="noopener noreferrer" class="polaris-card px-4 py-2 text-xs font-bold text-center hover:border-accent transition-colors">
+                    GitHub Profile
+                </a>
+                <a href="mailto:earljohnbplaza@gmail.com" class="polaris-card polaris-accent px-4 py-2 text-xs font-bold text-center hover:border-accent transition-colors">
+                    Contact Email
+                </a>
             </div>
         </header>
 
         <!-- Metrics Overview Bar (100% Audited Fact) -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="polaris-card p-4 text-center">
-                <div class="text-2xl font-bold text-gray-900 dark:text-white">5</div>
+                <div class="text-2xl font-bold text-gray-900 dark:text-white">6</div>
                 <div class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-1">GitHub Repositories</div>
             </div>
             <div class="polaris-card p-4 text-center polaris-accent">
-                <div class="text-2xl font-bold">71</div>
+                <div class="text-2xl font-bold">86</div>
                 <div class="text-[10px] font-bold uppercase tracking-widest mt-1 text-gray-500 dark:text-gray-400">Verified Automated Tests</div>
             </div>
             <div class="polaris-card p-4 text-center">
@@ -108,132 +117,143 @@
             </div>
         </section>
 
-        <!-- Project Grid -->
-        <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-800 pb-2">Technical Engineering Core</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Project: RFC RAG Pipeline -->
-            <div class="polaris-card p-6 flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded border border-blue-100 dark:border-blue-800/50 uppercase">AI Infrastructure</span>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-3">RFC RAG Pipeline</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Retrieval-Augmented Generation system for technical RFC documentation. Implements vector embeddings and semantic search for high-accuracy knowledge retrieval.</p>
-                </div>
-                <div class="mt-4">
-                    <div class="frame-window terminal-bg h-32 p-3 text-[10px] font-mono text-slate-300">
-                        <p class="text-emerald-400 dark:text-emerald-500">$ python rag_query.py --input "RFC 6749"</p>
-                        <p class="text-slate-500">>> Loading Vector Index...</p>
-                        <p class="text-slate-400">>> Context retrieved from ChromaDB (3 chunks)</p>
-                        <p class="text-blue-300">>> Response generated via local LLM</p>
+        <!-- Selected Projects Grid (Symmetrical 2x2 Deep-Tech Systems) -->
+        <main>
+            <h2 class="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Core Systems & Engineering Repositories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Project 1: gitops-infra-pipeline -->
+                <div class="bg-surface border border-default rounded-lg p-6 flex flex-col justify-between hover:border-accent transition-colors shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                                DEVOPS & IAC
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">gitops-infra-pipeline</h3>
+                        <p class="text-sm text-secondary mb-4">
+                            Automated GitOps CI/CD pipeline featuring containerized microservices, modular Terraform IaC, 10% canary traffic shifting, and zero-downtime health probing.
+                        </p>
+                        <div class="bg-surface-secondary rounded p-3 text-xs font-mono text-secondary mb-4 space-y-1">
+                            <div>$ pytest tests/</div>
+                            <div class="text-emerald-500">>> 15 passed in 0.10s [OK]</div>
+                            <div>>> Canary Traffic: 10% -> 100%</div>
+                            <div>>> Zero-Downtime Rollback Ready</div>
+                        </div>
                     </div>
-                    <a href="https://github.com/earljohn-spec/rfc-rag-pipeline" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/gitops-infra-pipeline" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-accent hover:underline">
+                        View Repository &rarr;
+                    </a>
                 </div>
-            </div>
 
-            <!-- Project: Convergence CRDT -->
-            <div class="polaris-card p-6 flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-2 py-0.5 rounded border border-purple-100 dark:border-purple-800/50 uppercase">Distributed Systems</span>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-3">Convergence CRDT</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Conflict-free Replicated Data Types for real-time collaborative state. Ensures eventual consistency across distributed nodes without central locking.</p>
-                </div>
-                <div class="mt-4">
-                    <div class="frame-window terminal-bg h-32 p-3 text-[10px] font-mono text-slate-300">
-                        <p class="text-emerald-400 dark:text-emerald-500">$ npm run test:consistency</p>
-                        <p class="text-slate-400">Node A (Op 1) | Node B (Op 2)</p>
-                        <p class="text-emerald-400 dark:text-emerald-500">>> LWW-Element-Set: MERGED [OK]</p>
-                        <p class="text-slate-400">>> Converged State: Consistent</p>
+                <!-- Project 2: rfc-rag-pipeline -->
+                <div class="bg-surface border border-default rounded-lg p-6 flex flex-col justify-between hover:border-accent transition-colors shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-500 border border-purple-500/20">
+                                AI & DATA
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">RFC RAG Pipeline</h3>
+                        <p class="text-sm text-secondary mb-4">
+                            Retrieval-Augmented Generation infrastructure indexing technical IETF RFC standards into ChromaDB with dense semantic vector search.
+                        </p>
+                        <div class="bg-surface-secondary rounded p-3 text-xs font-mono text-secondary mb-4 space-y-1">
+                            <div>$ python query.py --topic "TCP Congestion"</div>
+                            <div>>> Top Chunk: RFC 5681 (Similarity: 0.892)</div>
+                            <div class="text-emerald-500">>> Response generated via local LLM</div>
+                        </div>
                     </div>
-                    <a href="https://github.com/earljohn-spec/convergence-crdt" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/rfc-rag-pipeline" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-accent hover:underline">
+                        View Repository &rarr;
+                    </a>
                 </div>
-            </div>
 
-            <!-- Project: Stockflow ERP -->
-            <div class="polaris-card p-6 flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-bold text-[#008060] dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded border border-emerald-100 dark:border-emerald-800/50 uppercase">Enterprise Software</span>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-3">Stockflow ERP</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Shopify Polaris-based Inventory & POS ecosystem. Role-based access control, reactive ledger adjustments, and adblock-resilient analytics.</p>
-                </div>
-                <div class="mt-4">
-                    <div class="frame-window h-32 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-                        <div class="bg-gray-200 dark:bg-gray-700 px-2 py-1 flex gap-1 border-b border-gray-300 dark:border-gray-600"><span class="browser-dot dot-red"></span><span class="browser-dot dot-yellow"></span><span class="browser-dot dot-green"></span></div>
-                        <img src="stockflow.png" alt="Stockflow Dashboard" class="w-full h-full object-cover object-top opacity-80" />
+                <!-- Project 3: convergence-crdt -->
+                <div class="bg-surface border border-default rounded-lg p-6 flex flex-col justify-between hover:border-accent transition-colors shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
+                                DISTRIBUTED SYSTEMS
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Convergence CRDT</h3>
+                        <p class="text-sm text-secondary mb-4">
+                            Conflict-free Replicated Data Type engine delivering local-first eventual consistency across peer nodes without central locking.
+                        </p>
+                        <div class="bg-surface-secondary rounded p-3 text-xs font-mono text-secondary mb-4 space-y-1">
+                            <div>$ node benchmark.js</div>
+                            <div>>> Operations Merged: 10,000 ops</div>
+                            <div class="text-emerald-500">>> Converged State: Consistent</div>
+                        </div>
                     </div>
-                    <a href="https://github.com/earljohn-spec/stockflow" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/convergence-crdt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-accent hover:underline">
+                        View Repository &rarr;
+                    </a>
                 </div>
-            </div>
 
-            <!-- Project: Salary Predictor -->
-            <div class="polaris-card p-6 flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-2 py-0.5 rounded border border-amber-100 dark:border-amber-800/50 uppercase">Machine Learning</span>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-3">Salary Predictor</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">XGBoost regression pipeline ($5,465 MAE) with FastAPI serving and SHAP explainability summaries for feature attribution.</p>
-                </div>
-                <div class="mt-4">
-                    <div class="frame-window terminal-bg h-32 p-3 text-[10px] font-mono text-slate-300">
-                        <p class="text-emerald-400 dark:text-emerald-500">$ pytest tests/benchmarks</p>
-                        <p class="text-slate-400">>> XGBoost R2: 0.9764</p>
-                        <p class="text-emerald-400 dark:text-emerald-500">>> Inference Latency: 12ms [OK]</p>
-                        <p class="text-slate-400">>> SHAP waterfall generated</p>
+                <!-- Project 4: salary-predictor -->
+                <div class="bg-surface border border-default rounded-lg p-6 flex flex-col justify-between hover:border-accent transition-colors shadow-sm">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                                MACHINE LEARNING
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Salary Predictor</h3>
+                        <p class="text-sm text-secondary mb-4">
+                            XGBoost regression pipeline ($5,465 MAE) with FastAPI serving and SHAP explainability summaries for feature attribution.
+                        </p>
+                        <div class="bg-surface-secondary rounded p-3 text-xs font-mono text-secondary mb-4 space-y-1">
+                            <div>$ pytest tests/benchmarks</div>
+                            <div>>> XGBoost R2: 0.9764</div>
+                            <div class="text-emerald-500">>> Inference Latency: 12ms [OK]</div>
+                            <div>>> SHAP waterfall generated</div>
+                        </div>
                     </div>
-                    <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" class="inline-block mt-4 text-xs font-bold polaris-accent hover:underline">View Repository →</a>
+                    <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-accent hover:underline">
+                        View Repository &rarr;
+                    </a>
                 </div>
-            </div>
 
-        </div>
-
-        <!-- Technical Competencies Matrix -->
-        <section class="polaris-card p-6 md:p-8 space-y-4">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800 pb-2">Project Governance & Technical Stack</h2>
-            <div class="grid md:grid-cols-4 gap-6 text-[11px] leading-relaxed">
-                <div><h3 class="font-bold text-gray-900 dark:text-white uppercase mb-2 tracking-widest">Management</h3><p class="text-gray-600 dark:text-gray-400">Agile Delivery<br>AppSec Auditing<br>Risk Mitigation</p></div>
-                <div><h3 class="font-bold text-gray-900 dark:text-white uppercase mb-2 tracking-widest">Backend</h3><p class="text-gray-600 dark:text-gray-400">Laravel 12 / PHP 8.5<br>Python / FastAPI<br>Node.js / CRDTs</p></div>
-                <div><h3 class="font-bold text-gray-900 dark:text-white uppercase mb-2 tracking-widest">AI & Data</h3><p class="text-gray-600 dark:text-gray-400">XGBoost ML Pipelines<br>RAG / Vector DBs<br>Semantic Search</p></div>
-                <div><h3 class="font-bold text-gray-900 dark:text-white uppercase mb-2 tracking-widest">Frontend</h3><p class="text-gray-600 dark:text-gray-400">Shopify Polaris UI<br>Tailwind / Alpine.js<br>Native Blade SVG</p></div>
             </div>
-        </section>
+        </main>
 
         <!-- Footer -->
-        <footer class="text-center py-4 text-[10px] text-gray-400 dark:text-gray-500">
-            © 2026 Earl John Plaza · IT Project Manager & Systems Engineer · Davao Del Norte State College of Panabo
+        <footer class="text-center text-xs text-secondary pt-8 border-t border-default">
+            <p>&copy; 2026 Earl John Plaza · IT Project Manager & Systems Engineer · Davao Del Norte State College of Panabo</p>
         </footer>
-
     </div>
 
-    <!-- Theme Toggler JavaScript Logic -->
+    <!-- Dark/Light Theme Script -->
     <script>
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-        const themeToggleText = document.getElementById('theme-toggle-text');
-        const themeToggleBtn = document.getElementById('theme-toggle');
-
-        function updateToggleUI() {
-            const isDark = document.documentElement.classList.contains('dark');
+        function applyTheme(isDark) {
             if (isDark) {
-                themeToggleLightIcon.classList.remove('hidden');
-                themeToggleDarkIcon.classList.add('hidden');
-                themeToggleText.textContent = 'Light';
+                document.documentElement.classList.add('dark');
+                document.getElementById('themeIcon').textContent = '🌙';
+                document.getElementById('themeText').textContent = 'Dark';
+                localStorage.setItem('theme', 'dark');
             } else {
-                themeToggleDarkIcon.classList.remove('hidden');
-                themeToggleLightIcon.classList.add('hidden');
-                themeToggleText.textContent = 'Dark';
+                document.documentElement.classList.remove('dark');
+                document.getElementById('themeIcon').textContent = '☀️';
+                document.getElementById('themeText').textContent = 'Light';
+                localStorage.setItem('theme', 'light');
             }
         }
 
-        updateToggleUI();
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            applyTheme(!isDark);
+        }
 
-        themeToggleBtn.addEventListener('click', function() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            }
-            updateToggleUI();
-        });
+        // Initialize Theme from localStorage or OS Preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme === 'dark');
+        } else {
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(systemPrefersDark);
+        }
     </script>
 </body>
 </html>
