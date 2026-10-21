@@ -111,7 +111,7 @@
                 <div class="text-[10px] font-bold text-secondary uppercase tracking-widest mt-1">GitHub Repositories</div>
             </div>
             <div class="metric-card p-4 text-center border-t-2 border-t-emerald-500">
-                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-500">200</div>
+                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-500">210</div>
                 <div class="text-[10px] font-bold text-secondary uppercase tracking-widest mt-1">Verified Automated Tests</div>
             </div>
             <div class="metric-card p-4 text-center border-t-2 border-t-purple-500">
@@ -267,13 +267,13 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20">
-                                MACHINE LEARNING
+                                MACHINE LEARNING & MLOPS
                             </span>
-                            <span class="text-[10px] font-mono text-emerald-500 font-semibold">[15 TESTS PASSING]</span>
+                            <span class="text-[10px] font-mono text-emerald-500 font-semibold">[25 TESTS PASSING]</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Salary Predictor</h3>
                         <p class="text-xs sm:text-sm text-secondary mb-4 leading-relaxed">
-                            XGBoost regression pipeline ($5,465 MAE) with FastAPI serving and SHAP explainability summaries for feature attribution.
+                            XGBoost regression pipeline ($5,465 MAE) with FastAPI serving, Docker runtime containerization, WBS compliance, and SHAP explainability.
                         </p>
 
                         <!-- macOS Terminal Header -->
@@ -282,21 +282,22 @@
                                 <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
                                 <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
                                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                                <span class="text-[10px] text-slate-500 ml-2">pytest — benchmarks</span>
+                                <span class="text-[10px] text-slate-500 ml-2">pytest — tests/</span>
                             </div>
                             <div class="p-3 text-slate-300 space-y-1">
-                                <div class="text-slate-500">$ pytest tests/benchmarks</div>
-                                <div class="text-slate-300">>> XGBoost R2 Score: 0.9764</div>
-                                <div class="text-emerald-400">>> Inference Latency: 12ms [OK]</div>
+                                <div class="text-slate-500">$ pytest tests/</div>
+                                <div class="text-emerald-400">>> 25 passed in 0.42s [OK]</div>
+                                <div class="text-slate-400">>> XGBoost R2 Score: 0.9764</div>
+                                <div class="text-slate-400">>> WBS Governance Compliance Verified</div>
                             </div>
                         </div>
 
                         <!-- Tech Stack Micro-Pills -->
                         <div class="flex flex-wrap gap-1.5 mb-4">
                             <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">XGBoost</span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">SHAP</span>
                             <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">FastAPI</span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Pydantic v2</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Docker</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">SHAP</span>
                         </div>
                     </div>
                     <a href="https://github.com/earljohn-spec/salary-predictor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400 group-hover:underline gap-1 pt-2 border-t border-default">
